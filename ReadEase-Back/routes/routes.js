@@ -18,8 +18,6 @@ router.post('/users', createUser);
 router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
 
-// Ruta de login
-router.post('/login', loginUser); // Nueva ruta para login
 
 // Rutas de libros
 router.get('/books', getAllBooks);
