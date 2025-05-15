@@ -20,7 +20,8 @@ const UserBooksModel = db.define('user_books', {
     }
 }, {
     timestamps: false,
-    tableName: 'user_books' 
+    tableName: 'user_books',
+    freezeTableName: true  
 });
 
 export default UserBooksModel;

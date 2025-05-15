@@ -6,7 +6,8 @@ const CartItemModel = db.define('cart_items', {
     cart_id: { type: DataTypes.INTEGER },
     book_id: { type: DataTypes.INTEGER }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true 
 });
 
 export default CartItemModel;

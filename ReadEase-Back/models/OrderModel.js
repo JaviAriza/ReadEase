@@ -7,7 +7,8 @@ const OrderModel = db.define('orders', {
     date: { type: DataTypes.DATE },
     total_price: { type: DataTypes.DECIMAL(10, 2) }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true 
 });
 
 export default OrderModel;
