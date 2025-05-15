@@ -1,25 +1,30 @@
 .home-container {
   background-color: #d7f3c7;
-  height: 100vh;
+  height: 100vh;               /* ocupa toda la pantalla vertical */
   display: flex;
+  width: 200VH;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.header {
-  margin-bottom: 40px;
-}
+
 
 .logo {
   font-family: 'Arial', sans-serif;
   font-size: 3rem;
   color: #333;
+  text-align: center;
 }
 
 .buttons-container {
   display: flex;
+  flex-direction: row;      /* apilados verticalmente */
   gap: 20px;
+  width: 100%;
+  max-width: 300px;            /* limita ancho para no quedar muy ancho */
 }
 
 .home-button {
@@ -29,7 +34,10 @@
   padding: 15px 30px;
   border-radius: 10px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
+  border: none;
+  width: 100%;                /* botones toman todo el ancho */
+  text-align: center;
 }
 
 .home-button:hover {

@@ -1,12 +1,13 @@
 import React from 'react';
-import Header from '../components/Header'; 
-import Footer from '../components/Footer'; 
+import Footer from '../components/Footer/Footer'; 
 import './Home.css';
+import { Link } from 'react-router-dom';
+
 
 export default function Home() {
   return (
     <div className="home-container">
-      <Header /> 
+      
       
       <div className="content">
         <header className="header">
@@ -14,9 +15,15 @@ export default function Home() {
         </header>
 
         <div className="buttons-container">
-          <button className="home-button">Store</button>
-          <button className="home-button">My Books</button>
-          <button className="home-button">Configuration</button>
+          <Link to="/store" className="home-button">
+            Store
+          </Link>
+          <Link to="/my-books" className="home-button">
+            My Books
+          </Link>
+          <Link to="/config" className="home-button">
+            Configuration
+          </Link>
         </div>
       </div>
       
