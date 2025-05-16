@@ -18,10 +18,9 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
 ## Technologies
 
-- **Frontend:** Node.js
-- **Backend:** Node.js
+- **Frontend:** Node.js  
+- **Backend:** Node.js  
 - **Database:** MySQL  
-  
 
 ---
 
@@ -101,19 +100,6 @@ ReadEase/
 ├── ReadEase-Front/       # Frontend source code  
 ├── README.md             # This file  
 └── .git/                 # Git configuration  
-Contributing
-Contributions are welcome! To contribute:
-
-Fork the project.
-
-Create a new branch (git checkout -b feature/your-feature).
-
-Commit your changes (git commit -m 'Add some feature').
-
-Push to the branch (git push origin feature/your-feature).
-
-Open a Pull Request.
-
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
