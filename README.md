@@ -35,19 +35,14 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
 1. Clone the repository
 
-```bash
 git clone https://github.com/JaviAriza/ReadEase.git
 Install dependencies and run the frontend
 
-bash
-Copiar
 cd ReadEase/ReadEase-Front
 npm install
 npm run dev
 Install dependencies and run the backend
 
-bash
-Copiar
 cd ../../ReadEase-Back
 npm install
 node app.js  # or your main backend file
@@ -62,14 +57,10 @@ If you don’t have MySQL installed, download and install it from MySQL Download
 Create the database
 Open your MySQL console and run:
 
-sql
-Copiar
 CREATE DATABASE readease;
 Configure credentials
 In the backend folder, create a .env file (if not present) and add your database connection variables:
 
-env
-Copiar
 DB_HOST=localhost
 DB_USER=your_mysql_username
 DB_PASSWORD=your_mysql_password
@@ -93,8 +84,6 @@ Add, edit, or delete texts.
 Enjoy an enhanced reading experience.
 
 Project Structure
-bash
-Copiar
 ReadEase/
 ├── ReadEase-Back/        # Backend source code  
 ├── ReadEase-Front/       # Frontend source code  
@@ -106,4 +95,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Contact
 For questions or suggestions, you can reach me at:
 
-Email: your-email@example.com
+Email: javier.ariza.rosales@gmail.com
