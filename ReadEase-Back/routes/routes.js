@@ -8,6 +8,7 @@ import { getAllCartItems, getCartItem, createCartItem, updateCartItem, deleteCar
 import { getAllOrders, getOrder, createOrder, updateOrder, deleteOrder } from '../controllers/OrderController.js';
 import { getAllOrderItems, getOrderItem, createOrderItem, updateOrderItem, deleteOrderItem } from '../controllers/OrderItemController.js';
 import { getAllUserBooks, getUserBook, createUserBook, updateUserBook, deleteUserBook } from '../controllers/UserBookController.js';  // Nueva importación
+import { getBookText } from '../controllers/PdfController.js'
 
 const router = express.Router();
 
@@ -25,6 +26,9 @@ router.get('/books/:id', getBook);
 router.post('/books', createBook);
 router.put('/books/:id', updateBook);
 router.delete('/books/:id', deleteBook);
+
+// Extraer texto del PDF de un libro
+router.get(   '/books/:id/text', getBookText)
 
 // Rutas de carrito
 router.get('/carts', getAllCarts);
