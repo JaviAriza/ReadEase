@@ -1,33 +1,54 @@
 import React from 'react';
 import Footer from '../components/Footer/Footer'; 
-import './Home.css';
 import { Link } from 'react-router-dom';
-
 
 export default function Home() {
   return (
-    <div className="home-container">
-      
-      
-      <div className="content">
-        <header className="header">
-          <h1 className="logo">ReadEase</h1>
-        </header>
+    <div className="bg-[#def5e1]">
 
-        <div className="buttons-container">
-          <Link to="/store" className="home-button">
-            Store
+      {/* Contenido principal */}
+      <main className="">
+
+        {/* Logo */}
+        <img
+          src="https://res.cloudinary.com/dnjosjzrj/image/upload/v1747910618/Adobe_Express_-_file_coii59.png"
+          alt="Logo"
+          className=""
+        />
+        
+        {/* Botones */}
+        <div className="flex">
+
+          <Link
+            to="/store"
+            className=""
+          >
+            <span>📚</span>
+            <span className="mt-2">Store</span>
           </Link>
-          <Link to="/my-books" className="home-button">
-            My Books
+
+          <Link
+            to="/my-books"
+            className=""
+          >
+            <span>📖</span>
+            <span className="">My books</span>
+
           </Link>
-          <Link to="/config" className="home-button">
-            Configuration
+
+          <Link
+            to="/config"
+            className=""
+          >
+            <span>⚙️</span>
+            <span className="">Configuration</span>
           </Link>
+          
         </div>
-      </div>
-      
-      <Footer />  
+
+      </main>
+
+      <Footer />
     </div>
   );
 }

@@ -27,10 +27,11 @@ function App() {
     // Aquí podrías añadir limpieza de tokens, llamadas a backend, etc.
   };
 
+
+  //     <Header isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout} />
+
   return (
     <BrowserRouter>
-      <Header isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout} />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
