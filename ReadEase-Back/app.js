@@ -39,3 +39,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Server at http://localhost:${PORT}/`)
   console.log(`🛠 AdminJS at http://localhost:${PORT}${adminJs.options.rootPath}`)
 })
+
+export default app;
