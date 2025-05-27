@@ -1,30 +1,34 @@
-// app.js
 import dotenv from 'dotenv'
 dotenv.config()
+
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
 import multer from 'multer'
+
 import db from './database/db.js'
 import router from './routes/routes.js'
+import authRouter from './routes/auth.js'            // <-- Import auth routes
 import { adminJs, router as adminRouter } from './admin.js'
 
 const app = express()
+
 app.use(cors())
 app.use(express.json())
 
-// 1) Configura multer para subir PDFs a /tmp
+app.use('/api/auth', authRouter)
+
+// 1) Configure multer to upload PDFs into /tmp
 const upload = multer({ dest: path.join(process.cwd(), 'tmp') })
 
-// 2) Monta AdminJS ANTES de las rutas de API
+// 2) Mount AdminJS at its root path BEFORE your API routes
 app.use(adminJs.options.rootPath, adminRouter)
 
-// 3) Aplica multer SOLO en la ruta de upload-pdf
-//    De este modo, cuando llegue un POST a /api/books/:id/upload-pdf,
-//    primero pasa por upload.single('file') y luego por tu controlador en routes/routes.js
+// 3) Apply multer only on the upload-PDF endpoint
+//    This ensures that POST /api/books/:id/upload-pdf uses upload.single('file')
 app.use('/api/books/:id/upload-pdf', upload.single('file'))
 
-// 4) Monta todas las rutas de tu API (incluye GET /books/:id/text y POST /books/:id/upload-pdf)
+// 4) Mount your main API router
 app.use('/api', router)
 
 try {
@@ -40,4 +44,4 @@ app.listen(PORT, () => {
   console.log(`🛠 AdminJS at http://localhost:${PORT}${adminJs.options.rootPath}`)
 })
 
-export default app;
+export default app

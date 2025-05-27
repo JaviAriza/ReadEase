@@ -1,68 +1,177 @@
-import express from 'express';
+// src/routes/routes.js
 
-// Importación de controladores
-import { getAllUsers, getUser, createUser, updateUser, deleteUser, loginUser } from '../controllers/UserController.js';
-import { getAllBooks, getBook, createBook, updateBook, deleteBook } from '../controllers/BookController.js';
-import { getAllCarts, getCart, createCart, updateCart, deleteCart } from '../controllers/CartController.js';
-import { getAllCartItems, getCartItem, createCartItem, updateCartItem, deleteCartItem } from '../controllers/CartItemController.js';
-import { getAllOrders, getOrder, createOrder, updateOrder, deleteOrder } from '../controllers/OrderController.js';
-import { getAllOrderItems, getOrderItem, createOrderItem, updateOrderItem, deleteOrderItem } from '../controllers/OrderItemController.js';
-import { getAllUserBooks, getUserBook, createUserBook, updateUserBook, deleteUserBook } from '../controllers/UserBookController.js';  // Nueva importación
+import express from 'express'
+import { authenticateToken, authorizeRoles } from '../middleware/auth.js'
+
+import {
+  getAllUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+} from '../controllers/UserController.js'
+
+import {
+  getAllBooks,
+  getBook,
+  createBook,
+  updateBook,
+  deleteBook,
+} from '../controllers/BookController.js'
+
+import {
+  getAllCarts,
+  getCart,
+  createCart,
+  updateCart,
+  deleteCart,
+} from '../controllers/CartController.js'
+
+import {
+  getAllCartItems,
+  getCartItem,
+  createCartItem,
+  updateCartItem,
+  deleteCartItem,
+} from '../controllers/CartItemController.js'
+
+import {
+  getAllOrders,
+  getOrder,
+  createOrder,
+  updateOrder,
+  deleteOrder,
+} from '../controllers/OrderController.js'
+
+import {
+  getAllOrderItems,
+  getOrderItem,
+  createOrderItem,
+  updateOrderItem,
+  deleteOrderItem,
+} from '../controllers/OrderItemController.js'
+
+import {
+  getAllUserBooks,
+  getUserBook,
+  createUserBook,
+  updateUserBook,
+  deleteUserBook,
+} from '../controllers/UserBookController.js'
+
 import { getBookText } from '../controllers/PdfController.js'
 
-const router = express.Router();
+const router = express.Router()
 
-// Rutas de usuarios
-router.get('/users', getAllUsers);
-router.get('/users/:id', getUser);
-router.post('/users', createUser);
-router.put('/users/:id', updateUser);
-router.delete('/users/:id', deleteUser);
+// ─── User Routes ───────────────────────────────────────────────────────────────
+// Anyone can register
+router.post('/users', createUser)
+// Only admins can list, view, update or delete users
+router.get('/users', authenticateToken, authorizeRoles('admin'), getAllUsers)
+router.get('/users/:id', authenticateToken, authorizeRoles('admin'), getUser)
+router.put('/users/:id', authenticateToken, authorizeRoles('admin'), updateUser)
+router.delete('/users/:id', authenticateToken, authorizeRoles('admin'), deleteUser)
 
 
-// Rutas de libros
-router.get('/books', getAllBooks);
-router.get('/books/:id', getBook);
-router.post('/books', createBook);
-router.put('/books/:id', updateBook);
-router.delete('/books/:id', deleteBook);
+// ─── Book Routes ────────────────────────────────────────────────────────────────
+router.get('/books', getAllBooks)
+router.get('/books/:id', getBook)
+// Only admins and managers can create or edit books
+router.post('/books', authenticateToken, authorizeRoles('admin', 'manager'), createBook)
+router.put('/books/:id', authenticateToken, authorizeRoles('admin', 'manager'), updateBook)
+// Only admins can delete books
+router.delete('/books/:id', authenticateToken, authorizeRoles('admin'), deleteBook)
 
-// Extraer texto del PDF de un libro
-router.get(   '/books/:id/text', getBookText)
+// Extract text from book PDF – public
+router.get('/books/:id/text', getBookText)
 
-// Rutas de carrito
-router.get('/carts', getAllCarts);
-router.get('/carts/:id', getCart);
-router.post('/carts', createCart);
-router.put('/carts/:id', updateCart);
-router.delete('/carts/:id', deleteCart);
 
-// Rutas de ítems en carrito
-router.get('/cart-items', getAllCartItems);
-router.get('/cart-items/:id', getCartItem);
-router.post('/cart-items', createCartItem);
-router.put('/cart-items/:id', updateCartItem);
-router.delete('/cart-items/:id', deleteCartItem);
+// ─── Cart Routes ────────────────────────────────────────────────────────────────
+// All cart operations require authentication
+router.get('/carts', authenticateToken, getAllCarts)
+router.get('/carts/:id', authenticateToken, getCart)
+router.post('/carts', authenticateToken, createCart)
+router.put('/carts/:id', authenticateToken, updateCart)
+router.delete('/carts/:id', authenticateToken, deleteCart)
 
-// Rutas de órdenes
-router.get('/orders', getAllOrders);
-router.get('/orders/:id', getOrder);
-router.post('/orders', createOrder);
-router.put('/orders/:id', updateOrder);
-router.delete('/orders/:id', deleteOrder);
 
-// Rutas de ítems de órdenes
-router.get('/order-items', getAllOrderItems);
-router.get('/order-items/:id', getOrderItem);
-router.post('/order-items', createOrderItem);
-router.put('/order-items/:id', updateOrderItem);
-router.delete('/order-items/:id', deleteOrderItem);
+// ─── Cart Item Routes ──────────────────────────────────────────────────────────
+router.get('/cart-items', authenticateToken, getAllCartItems)
+router.get('/cart-items/:id', authenticateToken, getCartItem)
+router.post('/cart-items', authenticateToken, createCartItem)
+router.put('/cart-items/:id', authenticateToken, updateCartItem)
+router.delete('/cart-items/:id', authenticateToken, deleteCartItem)
 
-// Rutas de relaciones entre usuarios y libros
-router.get('/user-books', getAllUserBooks); // Obtener todas las relaciones usuario-libro
-router.get('/user-books/:user_id/:book_id', getUserBook); // Obtener una relación específica usuario-libro
-router.post('/user-books', createUserBook); // Crear una nueva relación usuario-libro
-router.put('/user-books/:user_id/:book_id', updateUserBook); // Actualizar una relación usuario-libro
-router.delete('/user-books/:user_id/:book_id', deleteUserBook); // Eliminar una relación usuario-libro
 
-export default router;
+// ─── Order Routes ───────────────────────────────────────────────────────────────
+router.get(
+  '/orders',
+  authenticateToken,
+  authorizeRoles('admin', 'manager'),
+  getAllOrders
+)
+router.get('/orders/:id', authenticateToken, getOrder)
+// Only logged-in users can place orders
+router.post('/orders', authenticateToken, authorizeRoles('user'), createOrder)
+// Only admins can update or delete any order
+router.put('/orders/:id', authenticateToken, authorizeRoles('admin'), updateOrder)
+router.delete('/orders/:id', authenticateToken, authorizeRoles('admin'), deleteOrder)
+
+
+// ─── Order Item Routes ─────────────────────────────────────────────────────────
+router.get(
+  '/order-items',
+  authenticateToken,
+  authorizeRoles('admin', 'manager'),
+  getAllOrderItems
+)
+router.get('/order-items/:id', authenticateToken, getOrderItem)
+// Only users can add items to their order
+router.post('/order-items', authenticateToken, authorizeRoles('user'), createOrderItem)
+router.put(
+  '/order-items/:id',
+  authenticateToken,
+  authorizeRoles('user'),
+  updateOrderItem
+)
+router.delete(
+  '/order-items/:id',
+  authenticateToken,
+  authorizeRoles('admin'),
+  deleteOrderItem
+)
+
+
+// ─── User-Book Relationship Routes ─────────────────────────────────────────────
+router.get(
+  '/user-books',
+  authenticateToken,
+  authorizeRoles('admin'),
+  getAllUserBooks
+)
+router.get(
+  '/user-books/:user_id/:book_id',
+  authenticateToken,
+  authorizeRoles('admin', 'manager', 'user'),
+  getUserBook
+)
+router.post(
+  '/user-books',
+  authenticateToken,
+  authorizeRoles('user'),
+  createUserBook
+)
+router.put(
+  '/user-books/:user_id/:book_id',
+  authenticateToken,
+  authorizeRoles('user'),
+  updateUserBook
+)
+router.delete(
+  '/user-books/:user_id/:book_id',
+  authenticateToken,
+  authorizeRoles('admin'),
+  deleteUserBook
+)
+
+export default router
