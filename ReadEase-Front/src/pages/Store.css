@@ -1,0 +1,208 @@
+/* src/pages/Store.css */
+
+/* -------------------------------------------------------------------------- */
+/* Contenedor principal de la Store                                           */
+/* -------------------------------------------------------------------------- */
+.store-container {
+  width: 100%;
+  min-height: calc(100vh - 80px); /* Ajusta si tu header ocupa 80px */
+  background-color: #f5f7fa;      /* Fondo claro */
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* 8px de separación vertical entre filas */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Buscador                                                                   */
+/* -------------------------------------------------------------------------- */
+.search-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #6b46c1;
+  box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mensajes de estado (loading / error / no results)                          */
+/* -------------------------------------------------------------------------- */
+.status-message {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin: 4px 0;
+}
+
+.status-message.error {
+  color: #c53030;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Contenedor de la lista vertical                                            */
+/* -------------------------------------------------------------------------- */
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;      /* mismo gap que .store-container para consistencia */
+  overflow-y: auto;
+  padding-right: 4px; /* espacio para scrollbar si aparece */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cada elemento (fila) de libro                                              */
+/*  Ocupa el 80% del ancho, está centrado y mantiene altura cómoda            */
+/* -------------------------------------------------------------------------- */
+.book-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  padding: 8px 12px;           /* altura cómoda */
+  transition: transform 0.1s, box-shadow 0.1s;
+  font-size: 14px;
+
+  width: 50%;                  /* cada fila ocupa el 80% del ancho */
+  margin-left: auto;           /* centrado horizontal */
+  margin-right: auto;
+}
+
+.book-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Portada (izquierda): icono colorido                                         */
+/* -------------------------------------------------------------------------- */
+.book-cover {
+  flex-shrink: 0;
+  width: 36px;   /* icono compacto */
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px; /* separación a la derecha */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Contenedor para título, autor y precio                                      */
+/*  Se reparte con space-between                                              */
+/* -------------------------------------------------------------------------- */
+.book-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;          /* ocupa todo el espacio intermedio antes del botón */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Título con truncado                                                         */
+/* -------------------------------------------------------------------------- */
+.book-title {
+  font-weight: 600;
+  color: #2d3748;
+  max-width: 200px;           /* ancho máximo antes de cortar */
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Autor con truncado                                                          */
+/* -------------------------------------------------------------------------- */
+.book-author {
+  color: #718096;
+  max-width: 120px;           /* ancho máximo antes de cortar */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 16px;          /* separador respecto al título */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Precio                                                                       */
+/* -------------------------------------------------------------------------- */
+.book-price {
+  color: #2d3748;
+  font-weight: 500;
+  margin-left: 16px;          /* separador respecto al autor */
+  flex-shrink: 0;             /* para que no se encoja si falta espacio */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Botón de acción                                                             */
+/* -------------------------------------------------------------------------- */
+.action-button {
+  text-decoration: none;
+  background-color: #6b46c1;
+  color: #ffffff;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.2s;
+  margin-left: 16px;  /* separador claro respecto al precio */
+  flex-shrink: 0;     /* para que no se encoja */
+}
+
+.action-button:hover {
+  background-color: #553c9a;
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive adjustments                                                      */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  /* En pantallas más pequeñas pasamos a 90% en vez de 80% */
+  .book-item {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 6px;
+    width: 100%;   /* en móvil ocupa todo el ancho */
+  }
+  .book-cover {
+    width: 100%;
+    height: 80px;
+    margin-right: 0;
+    margin-bottom: 6px;
+  }
+  .book-content {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+  .book-author,
+  .book-price {
+    margin-left: 0; /* anulamos margin-left en móvil */
+  }
+  .action-button {
+    margin-left: 0; /* botón debajo del precio en móvil */
+  }
+}

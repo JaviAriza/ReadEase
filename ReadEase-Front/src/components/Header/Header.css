@@ -1,35 +1,74 @@
+/* Header.css */
+
+/* Contenedor principal del header */
 .header {
+  background-color: #333333;       /* fondo oscuro */
+  color: #ffffff;                  /* texto blanco */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  /* logo a la izquierda, nav a la derecha */
   align-items: center;
-  padding: 20px;
-  background-color: #4b4b4b;
-  color: white;
+  padding: 0 20px;
+  height: 60px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: fixed;                 /* que permanezca fijo arriba */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
-.logo-container {
-  flex: 1;
+/* División izquierda: logo */
+.header__left {
+  display: flex;
+  align-items: center;
 }
 
-.logo {
-  font-size: 2rem;
+/* Enlace del logo */
+.header__logo-link {
+  text-decoration: none;
+}
+
+/* Texto del logo */
+.header__logo {
+  font-size: 24px;
   font-weight: bold;
+  color: #ffffff;
   margin: 0;
 }
 
-.nav {
+/* Menú de navegación */
+.header__nav {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 15px;
 }
 
-.nav-link {
+/* Enlace de navegación */
+.header__nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.header__nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Botón (Logout) */
+.header__nav-button {
   background: none;
   border: none;
-  color: white;
-  font-size: 1.1rem;
+  color: #ffffff;
+  font-size: 16px;
   cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
-.nav-link:hover {
-  text-decoration: underline;
+.header__nav-button:hover {
+  background-color: rgba(255,255,255,0.1);
 }

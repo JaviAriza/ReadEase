@@ -5,21 +5,25 @@ import './Header.css';
 export default function Header({ isLoggedIn, username, onLogout }) {
   return (
     <header className="header">
-      <div className="logo-container">
-        <Link to="/" className="logo-link">
-          <h1 className="logo">ReadEase</h1>
+      <div className="header__left">
+        <Link to="/" className="header__logo-link">
+          <h1 className="header__logo">ReadEase</h1>
         </Link>
       </div>
-
-      <nav className="nav">
+      <nav className="header__nav">
         {isLoggedIn ? (
-          <button className="nav-link" onClick={onLogout}>
+          <button className="header__nav-button" onClick={onLogout}>
             {username} (Logout)
           </button>
         ) : (
-          <Link to="/login" className="nav-link">
-            Login
-          </Link>
+          <>
+            <Link to="/login" className="header__nav-link">
+              Login
+            </Link>
+            <Link to="/signup" className="header__nav-link">
+              Sign Up
+            </Link>
+          </>
         )}
       </nav>
     </header>

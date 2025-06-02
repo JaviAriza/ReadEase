@@ -1,6 +1,8 @@
+// src/routes/auth.js
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+import { Op } from 'sequelize'
 import * as models from '../models/index.js'
 
 const router = express.Router()
@@ -13,39 +15,31 @@ const router = express.Router()
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body
-
-    // 1) Validate input
     if (!email || !password) {
       return res.status(400).json({ message: 'Email and password are required' })
     }
 
-    // 2) Find user by email
-    const user = await models.UserModel.findOne({ where: { email } })
+    // Only users with a non-null role can login
+    const user = await models.UserModel.findOne({
+      where: {
+        email,
+        role: { [Op.not]: null }
+      }
+    })
     if (!user) {
-      // Do not reveal which field failed
       return res.status(401).json({ message: 'Invalid email or password' })
     }
 
-    // 3) Compare provided password with stored hash
     const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid email or password' })
     }
 
-    // 4) Build JWT payload
     const payload = {
-      userId: user.id_user,  // your primary key column
-      role:   user.role,
+      userId: user.id_user,
+      role:   user.role
     }
-
-    // 5) Sign the token
-    const token = jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    )
-
-    // 6) Return token to client
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
     return res.json({ token })
 
   } catch (error) {
