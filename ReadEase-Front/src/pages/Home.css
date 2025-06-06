@@ -1,0 +1,117 @@
+/* ReadEase-Front/src/pages/Home.css */
+
+/* -------------------------------------------------------------------------- */
+/* Asegurar que html, body y #root ocupen 100% de alto                        */
+/* -------------------------------------------------------------------------- */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Contenedor principal de Home (flex columna, ocupa todo el área menos Header) */
+/* -------------------------------------------------------------------------- */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Altura total de la ventana menos 60px de Header */
+  height: calc(100vh - 60px);
+  /* Fondo verde suave siempre, aunque estemos en modo oscuro */
+  background-color: #def5e1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DARK MODE HOME                                                             */
+/* -------------------------------------------------------------------------- */
+.dark .home-container {
+  /* En modo oscuro, mantenemos el mismo verde suave de fondo */
+  background-color: #def5e1;
+  color: #ffffff; /* En caso de texto adicional en la zona */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Logo dentro de Home                                                         */
+/* -------------------------------------------------------------------------- */
+.home-logo {
+  margin-bottom: 24px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Grid de las tres cards                                                     */
+/* -------------------------------------------------------------------------- */
+.cards-grid {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px; /* Espacio antes del footer */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Estilos de cada card                                                        */
+/* -------------------------------------------------------------------------- */
+.card {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* -------------------------------------------------------------------------- */
+/* LIGHT MODE CARD                                                             */
+/* -------------------------------------------------------------------------- */
+.light .card {
+  background-color: #ffffff;  /* blanco */
+  color: #333333;             /* texto oscuro */
+}
+
+.light .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* -------------------------------------------------------------------------- */
+/* DARK MODE CARD                                                              */
+/* -------------------------------------------------------------------------- */
+.dark .card {
+  background-color: #2b2b2b;  /* gris medio-oscuro */
+  color: #ffffff;             /* texto claro */
+}
+
+.dark .card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Icono dentro de cada card                                                    */
+/* -------------------------------------------------------------------------- */
+.card-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+/* En modo oscuro, el icono también en blanco */
+.dark .card-icon {
+  color: #ffffff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Label dentro de cada card                                                    */
+/* -------------------------------------------------------------------------- */
+.card-label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* En modo oscuro, la etiqueta en blanco */
+.dark .card-label {
+  color: #ffffff;
+}

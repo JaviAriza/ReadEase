@@ -1,208 +1,209 @@
-/* src/pages/Store.css */
+/* ReadEase-Front/src/pages/Store.css */
 
 /* -------------------------------------------------------------------------- */
 /* Contenedor principal de la Store                                           */
 /* -------------------------------------------------------------------------- */
 .store-container {
   width: 100%;
-  min-height: calc(100vh - 80px); /* Ajusta si tu header ocupa 80px */
-  background-color: #f5f7fa;      /* Fondo claro */
-  padding: 12px;
+  min-height: calc(100vh - 60px); /* altura total menos el header (60px) */
+  background-color: #def5e1;      /* verde suave, igual que en Home */
   box-sizing: border-box;
+  padding-top: 8px;               /* padding superior reducido */
   display: flex;
   flex-direction: column;
-  gap: 8px; /* 8px de separación vertical entre filas */
+  align-items: center;            /* centra vertical-list horizontalmente */
+  gap: 8px;                       /* espacio vertical reducido entre secciones */
+  margin-top: 60px;               /* para no solaparse con el header fijo */
 }
 
 /* -------------------------------------------------------------------------- */
-/* Buscador                                                                   */
+/* Barra de búsqueda                                                          */
 /* -------------------------------------------------------------------------- */
 .search-bar {
-  width: 100%;
+  width: 60%;                     /* coincide con ancho de la lista */
   display: flex;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;            /* espacio inferior reducido */
 }
 
 .search-input {
   width: 100%;
-  max-width: 600px;
-  padding: 6px 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 6px 10px;              /* padding compacto */
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 14px;
-  transition: border-color 0.2s;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #6b46c1;
-  box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.2);
 }
 
 /* -------------------------------------------------------------------------- */
-/* Mensajes de estado (loading / error / no results)                          */
-/* -------------------------------------------------------------------------- */
-.status-message {
-  text-align: center;
-  font-size: 14px;
-  color: #555;
-  margin: 4px 0;
-}
-
-.status-message.error {
-  color: #c53030;
-}
-
-/* -------------------------------------------------------------------------- */
-/* Contenedor de la lista vertical                                            */
+/* Lista de libros (vertical), centrada y con ancho al 60% del contenedor      */
 /* -------------------------------------------------------------------------- */
 .vertical-list {
+  width: 60%;
   display: flex;
   flex-direction: column;
-  gap: 8px;      /* mismo gap que .store-container para consistencia */
+  gap: 8px;                       /* espacio reducido entre cada card */
   overflow-y: auto;
-  padding-right: 4px; /* espacio para scrollbar si aparece */
+  padding-bottom: 16px;           /* evita que el último toque el footer */
 }
 
 /* -------------------------------------------------------------------------- */
-/* Cada elemento (fila) de libro                                              */
-/*  Ocupa el 80% del ancho, está centrado y mantiene altura cómoda            */
+/* Item individual de libro (modo claro)                                       */
 /* -------------------------------------------------------------------------- */
 .book-item {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  padding: 8px 12px;           /* altura cómoda */
-  transition: transform 0.1s, box-shadow 0.1s;
-  font-size: 14px;
-
-  width: 50%;                  /* cada fila ocupa el 80% del ancho */
-  margin-left: auto;           /* centrado horizontal */
-  margin-right: auto;
-}
-
-.book-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  align-items: center;            /* centra verticalmente icono y contenido */
+  background-color: #ffffff;      /* blanco en modo claro */
+  border-radius: 8px;
+  padding: 8px 12px;              /* padding compacto */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* -------------------------------------------------------------------------- */
-/* Portada (izquierda): icono colorido                                         */
+/* Item en modo oscuro: fondo gris oscuro para cada card                      */
+/* -------------------------------------------------------------------------- */
+.dark .book-item {
+  background-color: #3a3a3a;      /* gris oscuro suave */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Icono de portada a la izquierda                                             */
 /* -------------------------------------------------------------------------- */
 .book-cover {
   flex-shrink: 0;
-  width: 36px;   /* icono compacto */
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 12px; /* separación a la derecha */
+  width: 48px;                    /* icono más compacto  */
+  height: 72px;                   /* proporción 2:3 */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 12px;             /* margen derecho reducido */
+  align-self: center;             /* centra verticalmente */
 }
 
 /* -------------------------------------------------------------------------- */
-/* Contenedor para título, autor y precio                                      */
-/*  Se reparte con space-between                                              */
+/* Contenedor del resto de la información (texto, precio y botón)              */
+/* Dispuesto en fila, con justify-content: space-between para alinear         */
 /* -------------------------------------------------------------------------- */
 .book-content {
+  flex: 1;                        /* ocupa todo el ancho restante */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;          /* ocupa todo el espacio intermedio antes del botón */
-  white-space: nowrap;
-  overflow: hidden;
+  flex-direction: row;
+  align-items: center;            /* centra verticalmente todos los ítems */
+  justify-content: space-between; /* separa texto, precio y botón */
+  gap: 16px;                      /* espacio horizontal mínimo */
 }
 
 /* -------------------------------------------------------------------------- */
-/* Título con truncado                                                         */
+/* Bloque para texto (título + autor)                                          */
+/* -------------------------------------------------------------------------- */
+.book-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;                       /* espacio muy reducido entre línea y línea */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Título del libro (modo claro)                                               */
 /* -------------------------------------------------------------------------- */
 .book-title {
-  font-weight: 600;
-  color: #2d3748;
-  max-width: 200px;           /* ancho máximo antes de cortar */
-  text-overflow: ellipsis;
-  overflow: hidden;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 1.2;               /* menos espacio vertical */
+  margin: 0;
 }
 
 /* -------------------------------------------------------------------------- */
-/* Autor con truncado                                                          */
+/* Título del libro (modo oscuro)                                              */
+/* -------------------------------------------------------------------------- */
+.dark .book-title {
+  color: #dddddd;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Autor del libro (modo claro)                                                 */
 /* -------------------------------------------------------------------------- */
 .book-author {
-  color: #718096;
-  max-width: 120px;           /* ancho máximo antes de cortar */
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-left: 16px;          /* separador respecto al título */
+  font-size: 13px;
+  color: #666666;
+  margin: 0;
 }
 
 /* -------------------------------------------------------------------------- */
-/* Precio                                                                       */
+/* Autor del libro (modo oscuro)                                                */
+/* -------------------------------------------------------------------------- */
+.dark .book-author {
+  color: #bbbbbb;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Precio del libro (modo claro)                                                */
 /* -------------------------------------------------------------------------- */
 .book-price {
-  color: #2d3748;
-  font-weight: 500;
-  margin-left: 16px;          /* separador respecto al autor */
-  flex-shrink: 0;             /* para que no se encoja si falta espacio */
+  font-size: 13px;
+  color: #666666;
+  margin: 0;
+  white-space: nowrap;            /* evita que el precio se vaya a dos líneas */ 
 }
 
 /* -------------------------------------------------------------------------- */
-/* Botón de acción                                                             */
+/* Precio del libro (modo oscuro)                                               */
+/* -------------------------------------------------------------------------- */
+.dark .book-price {
+  color: #bbbbbb;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Botón de acción ("Add to Cart")                                              */
 /* -------------------------------------------------------------------------- */
 .action-button {
   text-decoration: none;
   background-color: #6b46c1;
   color: #ffffff;
-  padding: 6px 12px;
-  font-size: 14px;
+  padding: 6px 10px;              /* padding compacto */
   border-radius: 4px;
-  transition: background-color 0.2s, transform 0.2s;
-  margin-left: 16px;  /* separador claro respecto al precio */
-  flex-shrink: 0;     /* para que no se encoja */
+  font-size: 13px;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;                 /* no se encoge */
 }
 
 .action-button:hover {
-  background-color: #553c9a;
-  transform: translateY(-1px);
+  background-color: #5a3ea6;
 }
 
 /* -------------------------------------------------------------------------- */
-/* Responsive adjustments                                                      */
+/* Mensaje de estado (ej. "Book added to cart successfully!")                  */
+/* -------------------------------------------------------------------------- */
+.status-message {
+  font-size: 14px;
+  color: #2f855a;  /* verde oscuro para éxito */
+  margin-bottom: 8px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive (para pantallas pequeñas)                                         */
 /* -------------------------------------------------------------------------- */
 @media (max-width: 800px) {
-  /* En pantallas más pequeñas pasamos a 90% en vez de 80% */
-  .book-item {
-    width: 90%;
+  .vertical-list {
+    width: 90%;           /* ocupa más % en móvil */
   }
-}
-
-@media (max-width: 480px) {
   .book-item {
     flex-direction: column;
     align-items: flex-start;
-    padding: 8px;
-    gap: 6px;
-    width: 100%;   /* en móvil ocupa todo el ancho */
+    padding: 8px;         /* padding uniforme */
   }
   .book-cover {
     width: 100%;
-    height: 80px;
+    height: auto;
     margin-right: 0;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .book-content {
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 6px;
-  }
-  .book-author,
-  .book-price {
-    margin-left: 0; /* anulamos margin-left en móvil */
+    gap: 8px;
   }
   .action-button {
-    margin-left: 0; /* botón debajo del precio en móvil */
+    align-self: flex-start;
   }
 }

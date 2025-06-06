@@ -1,0 +1,183 @@
+/* ReadEase-Front/src/pages/Cart.css */
+
+/* Contenedor principal */
+.cart-container {
+  width: 100%;
+  min-height: calc(100vh - 60px); /* Altura menos header fijo */
+  padding-top: 60px; /* Para que no se solape con el header */
+  background-color: #def5e1; /* Mismo verde suave de la “Store” */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+/* Título */
+.cart-container h2 {
+  margin-top: 16px;
+  font-size: 24px;
+  color: #333333;
+}
+
+/* Mensaje de error */
+.cart-error {
+  color: #e53e3e; /* rojo */
+  margin-top: 12px;
+}
+
+/* Mensaje de éxito */
+.cart-message {
+  color: #2f855a; /* verde oscuro */
+  margin-top: 12px;
+}
+
+/* Cuando no hay items */
+.cart-container p {
+  margin-top: 16px;
+  color: #333333;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Lista de items (columna)                                                   */
+/* -------------------------------------------------------------------------- */
+.cart-items-list {
+  width: 60%;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 60vh; /* Para scrollear si muchos items */
+  overflow-y: auto;
+}
+
+/* Cada item en el carrito                                                     */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* modo claro */
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Modo oscuro para cada item                                                   */
+.dark .cart-item {
+  background-color: #3a3a3a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Lado izquierdo (título + autor)                                              */
+.cart-item-left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título del libro                                                             */
+.cart-item-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Título en modo oscuro                                                         */
+.dark .cart-item-title {
+  color: #dddddd;
+}
+
+/* Autor del libro                                                               */
+.cart-item-author {
+  font-size: 13px;
+  color: #666666;
+}
+
+/* Autor en modo oscuro                                                          */
+.dark .cart-item-author {
+  color: #bbbbbb;
+}
+
+/* Lado derecho (precio)                                                         */
+.cart-item-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Precio del libro                                                              */
+.cart-item-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Precio en modo oscuro                                                          */
+.dark .cart-item-price {
+  color: #dddddd;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Resumen y botón de “Pay”                                                     */
+/* -------------------------------------------------------------------------- */
+.cart-summary {
+  width: 60%;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Total a pagar                                                                */
+.cart-total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Total en modo oscuro                                                          */
+.dark .cart-total {
+  color: #ffffff;
+}
+
+/* Botón Pay                                                                    */
+.pay-button {
+  background-color: #6b46c1;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pay-button:hover {
+  background-color: #5a3ea6;
+}
+
+.pay-button:disabled {
+  background-color: #a78bfa; /* morado más claro cuando está deshabilitado */
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive (pantallas pequeñas)                                              */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .cart-items-list,
+  .cart-summary {
+    width: 90%;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .cart-item-right {
+    margin-top: 8px;
+  }
+  .cart-summary {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

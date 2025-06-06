@@ -1,9 +1,22 @@
+/* ReadEase-Front/src/components/Footer/Footer.css */
+
 .footer {
-  padding: 10px 20px;
-  background-color: #4b4b4b;
-  color: white;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+/* ============== LIGHT MODE FOOTER ============== */
+.light .footer {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* ============== DARK MODE FOOTER ============== */
+.dark .footer {
+  background-color: #222222;
+  color: #f0f0f0;
 }
