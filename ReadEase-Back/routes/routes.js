@@ -1,6 +1,7 @@
 // ReadEase-Back/src/routes/routes.js
 import express from "express";
 import { authenticateToken, authorizeRoles } from "../middleware/auth.js";
+import { getMyBooks } from "../controllers/UserBookController.js";
 
 import {
   getAllUsers,
@@ -205,6 +206,13 @@ router.delete(
   authenticateToken,
   authorizeRoles("admin"),
   deleteUserBook
+);
+
+router.get(
+  "/user-books/my",
+  authenticateToken,
+  authorizeRoles("user"),
+  getMyBooks
 );
 
 export default router;

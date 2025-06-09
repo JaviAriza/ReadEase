@@ -1,15 +1,60 @@
-// src/pages/MyBooks.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaBookOpen } from 'react-icons/fa';
+import API from '../services/api';
+import './MyBooks.css';
 
 export default function MyBooks() {
+  const [books, setBooks]   = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError]     = useState('');
+
+  // Fetch de mis libros
+  const fetchMyBooks = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      const token = localStorage.getItem('token');
+      const res = await API.get('/user-books/my', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setBooks(res.data);
+    } catch (err) {
+      console.error(err);
+      setError('Error loading your books.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchMyBooks();
+  }, []);
+
   return (
-    // 1) h-full w-full: ocupa todo el área padre
-    // 2) flex flex-col items-center justify-center: centra vertical/horizontal
-    // 3) bg-white: fondo blanco (puedes personalizar)
-    // 4) overflow-hidden: quita scroll
-    <div className="h-full w-full flex flex-col items-center justify-center bg-white overflow-hidden">
-      <h1 className="text-3xl font-semibold mb-4">My Books</h1>
-      <p>These are the books in your library.</p>
+    <div className="mybooks-container">
+      <h2>My Books</h2>
+
+      {loading && <p>Loading...</p>}
+      {error   && <p className="error">{error}</p>}
+      {!loading && books.length === 0 && <p>You have no books yet.</p>}
+
+      <div className="books-list">
+        {books.map(book => (
+          <div key={book.id} className="book-card">
+            <div className="book-info">
+              <h3 className="book-title">{book.title}</h3>
+              <p className="book-author">by {book.author}</p>
+            </div>
+            <button
+              className="read-button"
+              onClick={() => window.open(book.pdf_url, '_blank')}
+            >
+              <FaBookOpen style={{ marginRight: '6px' }}/>
+              Read
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
