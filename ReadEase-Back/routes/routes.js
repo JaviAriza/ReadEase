@@ -9,6 +9,9 @@ import {
   createUser,
   updateUser,
   deleteUser,
+  getSelfUser,
+  updateSelfUser,
+  deleteSelfUser,
 } from "../controllers/UserController.js";
 
 import {
@@ -25,7 +28,7 @@ import {
   createCart,
   updateCart,
   deleteCart,
-  payCart, // <-- Importamos payCart aquí
+  payCart,
 } from "../controllers/CartController.js";
 
 import {
@@ -76,33 +79,39 @@ router.get(
 router.put(
   "/users/:id",
   authenticateToken,
-  authorizeRoles("admin"),
+  authorizeRoles("admin", "user"),
   updateUser
 );
 router.delete(
   "/users/:id",
   authenticateToken,
-  authorizeRoles("admin"),
+  authorizeRoles("admin", "user"),
   deleteUser
+);
+
+// ─── Profile Routes (sin ID en el cliente) ────────────────────────────────────
+router.get(
+  "/users/me",
+  authenticateToken,
+  getSelfUser
+);
+router.put(
+  "/users/me",
+  authenticateToken,
+  updateSelfUser
+);
+router.delete(
+  "/users/me",
+  authenticateToken,
+  deleteSelfUser
 );
 
 // ─── Book Routes ────────────────────────────────────────────────────────────────
 router.get("/books", getAllBooks);
 router.get("/books/:id", getBook);
 router.post("/books", authenticateToken, authorizeRoles("admin"), createBook);
-router.put(
-  "/books/:id",
-  authenticateToken,
-  authorizeRoles("admin"),
-  updateBook
-);
-router.delete(
-  "/books/:id",
-  authenticateToken,
-  authorizeRoles("admin"),
-  deleteBook
-);
-
+router.put("/books/:id", authenticateToken, authorizeRoles("admin"), updateBook);
+router.delete("/books/:id", authenticateToken, authorizeRoles("admin"), deleteBook);
 router.get("/books/:id/text", getBookText);
 
 // ─── Cart Routes ────────────────────────────────────────────────────────────────
@@ -111,8 +120,6 @@ router.get("/carts/:id", authenticateToken, getCart);
 router.post("/carts", authenticateToken, createCart);
 router.put("/carts/:id", authenticateToken, updateCart);
 router.delete("/carts/:id", authenticateToken, deleteCart);
-
-// **** NUEVO ENDPOINT: Pay Cart ****
 router.post("/carts/pay", authenticateToken, payCart);
 
 // ─── Cart Item Routes ──────────────────────────────────────────────────────────
@@ -123,31 +130,11 @@ router.put("/cart-items/:id", authenticateToken, updateCartItem);
 router.delete("/cart-items/:id", authenticateToken, deleteCartItem);
 
 // ─── Order Routes ───────────────────────────────────────────────────────────────
-router.get(
-  "/orders",
-  authenticateToken,
-  authorizeRoles("admin"),
-  getAllOrders
-);
+router.get("/orders", authenticateToken, authorizeRoles("admin"), getAllOrders);
 router.get("/orders/:id", authenticateToken, getOrder);
-router.post(
-  "/orders",
-  authenticateToken,
-  authorizeRoles("user"),
-  createOrder
-);
-router.put(
-  "/orders/:id",
-  authenticateToken,
-  authorizeRoles("admin"),
-  updateOrder
-);
-router.delete(
-  "/orders/:id",
-  authenticateToken,
-  authorizeRoles("admin"),
-  deleteOrder
-);
+router.post("/orders", authenticateToken, authorizeRoles("user"), createOrder);
+router.put("/orders/:id", authenticateToken, authorizeRoles("admin"), updateOrder);
+router.delete("/orders/:id", authenticateToken, authorizeRoles("admin"), deleteOrder);
 
 // ─── Order Item Routes ─────────────────────────────────────────────────────────
 router.get(
@@ -207,7 +194,6 @@ router.delete(
   authorizeRoles("admin"),
   deleteUserBook
 );
-
 router.get(
   "/user-books/my",
   authenticateToken,

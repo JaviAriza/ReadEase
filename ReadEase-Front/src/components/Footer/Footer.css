@@ -1,22 +1,33 @@
 /* ReadEase-Front/src/components/Footer/Footer.css */
 
 .footer {
+  /* ocupa todo el ancho del contenedor padre */
   width: 100%;
-  text-align: center;
-  padding: 12px 0;
-  position: relative;
-  bottom: 0;
-  left: 0;
+  
+  /* padding reducido para un footer más pequeño */
+  padding: 4px 0;
+  
+  /* flexbox para centrar el contenido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* colores según tema */
+  background-color: var(--card-bg);
+  color:            var(--card-fg);
+  
+  /* tamaño de fuente pequeño */
+  font-size: 0.75rem;
 }
 
 /* ============== LIGHT MODE FOOTER ============== */
 .light .footer {
   background-color: #ffffff;
-  color: #333333;
+  color:            #333333;
 }
 
 /* ============== DARK MODE FOOTER ============== */
 .dark .footer {
   background-color: #222222;
-  color: #f0f0f0;
+  color:            #f0f0f0;
 }

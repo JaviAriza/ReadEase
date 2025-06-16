@@ -1,5 +1,8 @@
 /* ReadEase-Front/src/components/Header/Header.css */
 
+/* Carga de la fuente Lobster */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -20,10 +23,16 @@
   color: #333333;
 }
 
-.light .header__logo {
-  color: #333333;
+/* Logo */
+.header__logo {
+  font-family: 'Lobster', cursive;  /* Lobster */
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+  color: #def5e1;                   /* verde claro */
 }
 
+/* Nav links & buttons */
 .light .header__nav-link,
 .light .header__nav-button,
 .light .header__cart-button,
@@ -44,10 +53,13 @@
   color: #f0f0f0;
 }
 
+/* Logo in dark: same green */
 .dark .header__logo {
-  color: #f0f0f0;
+  font-family: 'Lobster', cursive;
+  color: #def5e1;
 }
 
+/* Nav links & buttons */
 .dark .header__nav-link,
 .dark .header__nav-button,
 .dark .header__cart-button,
@@ -62,15 +74,9 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Logo styles */
+/* Common nav styles */
 .header__logo-link {
   text-decoration: none;
-}
-
-.header__logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
 }
 
 .header__nav {
@@ -91,11 +97,6 @@
   transition: background-color 0.2s ease;
 }
 
-.header__nav-button {
-  background: none;
-}
-
-/* Cart button */
 .header__cart-button {
   display: flex;
   align-items: center;
@@ -108,7 +109,6 @@
   cursor: pointer;
 }
 
-/* Theme toggle button (ícono de sol/luna) */
 .header__theme-toggle {
   background: none;
   border: none;

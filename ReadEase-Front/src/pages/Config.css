@@ -1,0 +1,114 @@
+/* ReadEase-Front/src/pages/Config.css */
+
+/* 1) Fondo verde de la página */
+body,
+.configuration-page {
+  background-color: #e4f7e1;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;  /* centra horizontal */
+  align-items: flex-start;  /* separa del header */
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+/* 2) Panel gris centrado */
+.config-panel {
+  background: #4a4a4a;
+  width: 600px;         /* más ancho */
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  overflow: visible;    /* sin scroll interior */
+}
+
+/* 3) Header del panel */
+.panel-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.panel-icon {
+  margin-right: 12px;
+}
+.panel-title {
+  flex: 1;
+}
+
+/* 4) Línea divisoria */
+.panel-divider {
+  border: none;
+  border-top: 1px solid #666;
+  margin: 0;
+}
+
+/* 5) Cuerpo del panel */
+.panel-body {
+  padding: 24px 32px;
+}
+
+/* 6) Grupos de inputs */
+.config-group {
+  margin-bottom: 24px;
+}
+.config-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+.config-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #e4f7e1;
+  color: #333;
+}
+
+/* 7) Botones de acción */
+.config-button {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.config-button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* 8) Mensajes */
+.config-error {
+  color: #f66;
+  margin-bottom: 16px;
+}
+.config-message {
+  color: #6f6;
+  margin-bottom: 16px;
+}
+
+/* 9) Footer (delete account) */
+.config-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.delete-button {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #f66;
+  border-radius: 6px;
+  color: #f66;
+  cursor: pointer;
+}
+.delete-button:hover {
+  background: rgba(255,0,0,0.1);
+}

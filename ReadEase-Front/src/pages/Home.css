@@ -1,117 +1,115 @@
-/* ReadEase-Front/src/pages/Home.css */
+/* ——— Import Lobster ——— */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* -------------------------------------------------------------------------- */
-/* Asegurar que html, body y #root ocupen 100% de alto                        */
-/* -------------------------------------------------------------------------- */
-html,
-body,
-#root {
+/* 1) Reset de contenedor base */
+html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Contenedor principal de Home (flex columna, ocupa todo el área menos Header) */
-/* -------------------------------------------------------------------------- */
+/* 2) Main wrapper */
 .home-container {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 80px); /* header + footer */
+  background: var(--home-bg);
+  color: var(--home-fg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  /* Altura total de la ventana menos 60px de Header */
-  height: calc(100vh - 60px);
-  /* Fondo verde suave siempre, aunque estemos en modo oscuro */
-  background-color: #def5e1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* DARK MODE HOME                                                             */
-/* -------------------------------------------------------------------------- */
-.dark .home-container {
-  /* En modo oscuro, mantenemos el mismo verde suave de fondo */
-  background-color: #def5e1;
-  color: #ffffff; /* En caso de texto adicional en la zona */
+/* Light mode: fondo blanco */
+.light .home-container {
+  background: #ffffff;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Logo dentro de Home                                                         */
-/* -------------------------------------------------------------------------- */
-.home-logo {
-  margin-bottom: 24px;
+/* 3) Logo como texto mega grande */
+.home-logo-text {
+  font-family: 'Lobster', cursive;
+  font-size: 14rem;
+  margin: 2rem 0 0;
+  text-align: center;
+  color: var(--home-fg);
 }
+.light .home-logo-text {
+  color: #def5e1;
+}
+/* (dark mode logo unchanged) */
 
-/* -------------------------------------------------------------------------- */
-/* Grid de las tres cards                                                     */
-/* -------------------------------------------------------------------------- */
+/* 4) Tarjetas: absolute y pegadas al footer */
 .cards-grid {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 24px; /* Espacio antes del footer */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: var(--card-bg);
+  border-radius: 0 0 0.75rem 0.75rem;
+  overflow: hidden;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Estilos de cada card                                                        */
-/* -------------------------------------------------------------------------- */
+/* Light mode: background gris claro para cards */
+.light .cards-grid,
+.light .card {
+  background: #828282;
+}
+
+/* 5) Cada tarjeta centrada y expandida */
 .card {
-  width: 180px;
-  height: 180px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* -------------------------------------------------------------------------- */
-/* LIGHT MODE CARD                                                             */
-/* -------------------------------------------------------------------------- */
-.light .card {
-  background-color: #ffffff;  /* blanco */
-  color: #333333;             /* texto oscuro */
-}
-
-.light .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* -------------------------------------------------------------------------- */
-/* DARK MODE CARD                                                              */
-/* -------------------------------------------------------------------------- */
-.dark .card {
-  background-color: #2b2b2b;  /* gris medio-oscuro */
-  color: #ffffff;             /* texto claro */
-}
-
-.dark .card:hover {
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-}
-
-/* -------------------------------------------------------------------------- */
-/* Icono dentro de cada card                                                    */
-/* -------------------------------------------------------------------------- */
+/* Icono grande */
 .card-icon {
-  font-size: 36px;
-  margin-bottom: 12px;
+  font-size: 10rem;     /* aumentado desde 8rem */
+  margin-bottom: 2.5rem;
+  color: var(--card-fg);
 }
 
-/* En modo oscuro, el icono también en blanco */
-.dark .card-icon {
-  color: #ffffff;
-}
-
-/* -------------------------------------------------------------------------- */
-/* Label dentro de cada card                                                    */
-/* -------------------------------------------------------------------------- */
+/* Etiqueta grande en Lobster */
 .card-label {
-  font-size: 16px;
+  font-family: 'Lobster', cursive;
+  font-size: 4rem;      /* aumentado desde 3rem */
   font-weight: 600;
+  color: var(--card-fg);
 }
 
-/* En modo oscuro, la etiqueta en blanco */
+/* Light mode: iconos y textos de las cards en verde (igual que logo) */
+.light .card-icon,
+.light .card-label {
+  color: #def5e1;
+}
+
+/* Hover: expande horizontalmente */
+.card:hover {
+  transform: scaleX(1.05);
+  transition: transform 0.2s;
+}
+
+/* ——— Dark mode ——— */
+/* No tocar estas reglas */
+.dark .home-container {
+  background: #303134;
+}
+.dark .cards-grid,
+.dark .card {
+  background: #5c5c5c;
+}
+.dark .card-icon,
 .dark .card-label {
-  color: #ffffff;
+  color: #def5e1;
+}
+.dark .home-logo-text {
+  color: #def5e1;
 }

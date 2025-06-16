@@ -12,10 +12,7 @@ export default function Header({
   currentTheme,
 }) {
   const location = useLocation();
-  // Mostrar carrito solo si estamos en /store
   const isOnStorePage = location.pathname === '/store';
-
-  // Elegir ícono según tema actual
   const ThemeIcon = currentTheme === 'light' ? FaMoon : FaSun;
 
   return (
@@ -32,8 +29,6 @@ export default function Header({
             <button className="header__nav-button" onClick={onLogout}>
               {username} (Logout)
             </button>
-
-            {/* Carrito, solo visible en /store */}
             {isOnStorePage && (
               <Link to="/cart" className="header__cart-button">
                 <FaShoppingCart size={20} />
@@ -50,8 +45,6 @@ export default function Header({
             </Link>
           </>
         )}
-
-        {/* Botón para alternar modo claro/oscuro (siempre visible) */}
         <button
           className="header__theme-toggle"
           onClick={toggleTheme}
@@ -61,5 +54,5 @@ export default function Header({
         </button>
       </nav>
     </header>
-  );
+);
 }
