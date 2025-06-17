@@ -1,4 +1,3 @@
-// ReadEase-Front/src/pages/Cart.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaTrash } from 'react-icons/fa';
@@ -30,7 +29,6 @@ export default function Cart() {
     }
   };
 
-  // Extrae userId del token
   const getUserIdFromToken = () => {
     const token = localStorage.getItem('token');
     if (!token) return null;
@@ -38,7 +36,6 @@ export default function Cart() {
     return (payload && (payload.id || payload.userId || payload.sub)) || null;
   };
 
-  // Carga ítems del carrito
   const fetchCartItems = async () => {
     setLoading(true);
     setError('');
@@ -73,11 +70,9 @@ export default function Cart() {
     fetchCartItems();
   }, []);
 
-  // Suma precios
   const calculateTotal = () =>
     cartItems.reduce((sum, item) => sum + (parseFloat(item.book.price) || 0), 0);
 
-  // Elimina un ítem del carrito
   const handleRemove = async (itemId) => {
     setLoading(true);
     setError('');
@@ -95,7 +90,6 @@ export default function Cart() {
     }
   };
 
-  // Maneja el pago
   const handlePay = async () => {
     setLoading(true);
     setError('');
@@ -136,7 +130,9 @@ export default function Cart() {
               <div key={item.id} className="cart-item">
                 <div className="cart-item-left">
                   <div className="cart-item-title">{item.book.title}</div>
-                  <div className="cart-item-author">by {item.book.author}</div>
+                  <div className="cart-item-author">
+                    by {item.book.author}
+                  </div>
                 </div>
                 <div className="cart-item-right">
                   <div className="cart-item-price">
@@ -146,37 +142,36 @@ export default function Cart() {
                     className="remove-button"
                     onClick={() => handleRemove(item.id)}
                     disabled={loading}
-                    style={{ marginLeft: '8px' }}
                   >
-                    <FaTrash style={{ color: 'red' }} />
+                    <FaTrash />
                   </button>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="cart-summary">
-            <div className="cart-total">
-              Total: ${calculateTotal().toFixed(2)}
-            </div>
-            <button
-              className="pay-button"
-              onClick={handlePay}
-              disabled={loading}
-            >
-              Pay
-            </button>
-          </div>
-
-          {/* Botón pegado al footer */}
-          <div className="cart-footer">
+          {/* ─── Controles: Back + Resumen ─────────────────────────── */}
+          <div className="cart-controls">
             <button
               className="back-button"
-              onClick={() => navigate('/store')} // ahora va a la tienda
+              onClick={() => navigate('/store')}
               disabled={loading}
             >
               Back to Store
             </button>
+
+            <div className="cart-summary">
+              <div className="cart-total">
+                Total: ${calculateTotal().toFixed(2)}
+              </div>
+              <button
+                className="pay-button"
+                onClick={handlePay}
+                disabled={loading}
+              >
+                Pay
+              </button>
+            </div>
           </div>
         </>
       )}

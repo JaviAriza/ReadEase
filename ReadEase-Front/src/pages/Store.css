@@ -1,209 +1,211 @@
 /* ReadEase-Front/src/pages/Store.css */
 
-/* -------------------------------------------------------------------------- */
-/* Contenedor principal de la Store                                           */
-/* -------------------------------------------------------------------------- */
+/* ─── Importar Roboto para todo el texto ───────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ─── Contenedor principal de la Store ─────────────────────────────────── */
 .store-container {
-  width: 100%;
-  min-height: calc(100vh - 60px); /* altura total menos el header (60px) */
-  background-color: #def5e1;      /* verde suave, igual que en Home */
-  box-sizing: border-box;
-  padding-top: 8px;               /* padding superior reducido */
-  display: flex;
-  flex-direction: column;
-  align-items: center;            /* centra vertical-list horizontalmente */
-  gap: 8px;                       /* espacio vertical reducido entre secciones */
-  margin-top: 60px;               /* para no solaparse con el header fijo */
+  font-family:       'Roboto', sans-serif; /* aplícala aquí */
+  flex:              1;                   
+  width:             100%;
+  background-color:  var(--home-bg);
+  box-sizing:        border-box;
+  display:           flex;
+  flex-direction:    column;
+  align-items:       center;
+  overflow:          hidden;
+  padding-top:       60px;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Barra de búsqueda                                                          */
-/* -------------------------------------------------------------------------- */
+/* ─── Barra de búsqueda ──────────────────────────────────────────── */
 .search-bar {
-  width: 60%;                     /* coincide con ancho de la lista */
-  display: flex;
-  justify-content: center;
-  margin-bottom: 12px;            /* espacio inferior reducido */
+  width:              20%;
+  display:            flex;
+  justify-content:    center;
+  margin:             12px 0;
 }
-
 .search-input {
-  width: 100%;
-  padding: 6px 10px;              /* padding compacto */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  font-family:        'Roboto', sans-serif;
+  width:              100%;
+  padding:            6px 10px;
+  border:             1px solid #ccc;
+  border-radius:      4px;
+  font-size:          14px;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Lista de libros (vertical), centrada y con ancho al 60% del contenedor      */
-/* -------------------------------------------------------------------------- */
+/* ─── Lista de libros (6 por página) ───────────────────────────────────── */
 .vertical-list {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;                       /* espacio reducido entre cada card */
-  overflow-y: auto;
-  padding-bottom: 16px;           /* evita que el último toque el footer */
+  width:              60%;
+  display:            flex;
+  flex-direction:     column;
+  gap:                16px;
+  overflow:           hidden;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Item individual de libro (modo claro)                                       */
-/* -------------------------------------------------------------------------- */
+/* ─── Cada item de libro ──────────────────────────────────────────────── */
 .book-item {
-  display: flex;
-  align-items: center;            /* centra verticalmente icono y contenido */
-  background-color: #ffffff;      /* blanco en modo claro */
-  border-radius: 8px;
-  padding: 8px 12px;              /* padding compacto */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-family:        'Roboto', sans-serif;
+  display:            flex;
+  align-items:        center;
+  background-color:   var(--card-bg);
+  color:              var(--card-fg);
+  border-radius:      8px;
+  padding:            12px;
+  min-height:         64px;
+  box-shadow:         0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Item en modo oscuro: fondo gris oscuro para cada card                      */
-/* -------------------------------------------------------------------------- */
-.dark .book-item {
-  background-color: #3a3a3a;      /* gris oscuro suave */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+/* Icono con color de acento */
+.book-icon {
+  flex-shrink:        0;
+  margin-right:       12px;
+  color:              var(--accent);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Icono de portada a la izquierda                                             */
-/* -------------------------------------------------------------------------- */
-.book-cover {
-  flex-shrink: 0;
-  width: 48px;                    /* icono más compacto  */
-  height: 72px;                   /* proporción 2:3 */
-  object-fit: cover;
-  border-radius: 4px;
-  margin-right: 12px;             /* margen derecho reducido */
-  align-self: center;             /* centra verticalmente */
-}
-
-/* -------------------------------------------------------------------------- */
-/* Contenedor del resto de la información (texto, precio y botón)              */
-/* Dispuesto en fila, con justify-content: space-between para alinear         */
-/* -------------------------------------------------------------------------- */
+/* ─── Contenedor de texto, precio y botón ─────────────────────────────── */
 .book-content {
-  flex: 1;                        /* ocupa todo el ancho restante */
-  display: flex;
-  flex-direction: row;
-  align-items: center;            /* centra verticalmente todos los ítems */
-  justify-content: space-between; /* separa texto, precio y botón */
-  gap: 16px;                      /* espacio horizontal mínimo */
+  flex:               1;
+  display:            flex;
+  justify-content:    space-between;
+  align-items:        stretch;
+  gap:                16px;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Bloque para texto (título + autor)                                          */
-/* -------------------------------------------------------------------------- */
+/* Título y autor */
 .book-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;                       /* espacio muy reducido entre línea y línea */
+  display:            flex;
+  flex-direction:     column;
+  gap:                2px;
 }
-
-/* -------------------------------------------------------------------------- */
-/* Título del libro (modo claro)                                               */
-/* -------------------------------------------------------------------------- */
 .book-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333333;
-  line-height: 1.2;               /* menos espacio vertical */
-  margin: 0;
+  font-family:        'Roboto', sans-serif;
+  font-size:          16px;
+  font-weight:        500;
+  margin:             0;
+  color:              var(--card-fg);
 }
-
-/* -------------------------------------------------------------------------- */
-/* Título del libro (modo oscuro)                                              */
-/* -------------------------------------------------------------------------- */
-.dark .book-title {
-  color: #dddddd;
-}
-
-/* -------------------------------------------------------------------------- */
-/* Autor del libro (modo claro)                                                 */
-/* -------------------------------------------------------------------------- */
 .book-author {
-  font-size: 13px;
-  color: #666666;
-  margin: 0;
+  font-family:        'Roboto', sans-serif;
+  font-size:          13px;
+  margin:             0;
+  color:              var(--card-fg);
+  opacity:            0.7;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Autor del libro (modo oscuro)                                                */
-/* -------------------------------------------------------------------------- */
-.dark .book-author {
-  color: #bbbbbb;
-}
-
-/* -------------------------------------------------------------------------- */
-/* Precio del libro (modo claro)                                                */
-/* -------------------------------------------------------------------------- */
+/* Precio */
 .book-price {
-  font-size: 13px;
-  color: #666666;
-  margin: 0;
-  white-space: nowrap;            /* evita que el precio se vaya a dos líneas */ 
+  font-family:        'Roboto', sans-serif;
+  font-size:          13px;
+  white-space:        nowrap;
+  margin:             0;
+  color:              var(--card-fg);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Precio del libro (modo oscuro)                                               */
-/* -------------------------------------------------------------------------- */
-.dark .book-price {
-  color: #bbbbbb;
-}
-
-/* -------------------------------------------------------------------------- */
-/* Botón de acción ("Add to Cart")                                              */
-/* -------------------------------------------------------------------------- */
+/* ─── Botón “Add to Cart” cuadrado ───────────────────────────────────── */
 .action-button {
-  text-decoration: none;
-  background-color: #6b46c1;
-  color: #ffffff;
-  padding: 6px 10px;              /* padding compacto */
-  border-radius: 4px;
-  font-size: 13px;
-  transition: background-color 0.2s ease;
-  border: none;
-  cursor: pointer;
-  flex-shrink: 0;                 /* no se encoge */
+  font-family:        'Roboto', sans-serif;
+  flex-shrink:        0;
+  background-color:   var(--accent);
+  color:              var(--card-bg);
+  padding:            8px;
+  border:             none;
+  border-radius:      4px;
+  font-size:          13px;
+  cursor:             pointer;
+  transition:         background-color 0.2s ease;
+  height:             100%;
+  display:            inline-flex;
+  align-items:        center;
+  justify-content:    center;
 }
-
 .action-button:hover {
-  background-color: #5a3ea6;
+  background-color:   var(--card-fg);
+  color:              var(--card-bg);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Mensaje de estado (ej. "Book added to cart successfully!")                  */
-/* -------------------------------------------------------------------------- */
+/* ─── Mensaje de estado ─────────────────────────────────────────── */
 .status-message {
-  font-size: 14px;
-  color: #2f855a;  /* verde oscuro para éxito */
-  margin-bottom: 8px;
+  font-family:        'Roboto', sans-serif;
+  font-size:          14px;
+  color:              #2f855a;
+  margin:             0 0 8px 0;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Responsive (para pantallas pequeñas)                                         */
-/* -------------------------------------------------------------------------- */
+/* ─── Paginación ───────────────────────────────────────────────── */
+.pagination {
+  display:            flex;
+  justify-content:    center;
+  gap:                8px;
+  margin:             16px 0;
+}
+.pagination button {
+  font-family:        'Roboto', sans-serif;
+  padding:            6px 12px;
+  border:             none;
+  background-color:   var(--card-bg);
+  color:              var(--card-fg);
+  border-radius:      4px;
+  cursor:             pointer;
+  transition:         background-color 0.2s ease;
+}
+.pagination button:hover:not(:disabled) {
+  background-color:   var(--accent);
+  color:              var(--card-bg);
+}
+.pagination button.active {
+  background-color:   var(--accent);
+  color:              var(--card-bg);
+}
+.pagination button:disabled {
+  opacity:            0.5;
+  cursor:             not-allowed;
+}
+
+/* ─── Responsive (pantallas ≤ 800px) ───────────────────────────────── */
 @media (max-width: 800px) {
+  .search-bar,
   .vertical-list {
-    width: 90%;           /* ocupa más % en móvil */
+    width: 90%;
   }
   .book-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px;         /* padding uniforme */
+    flex-direction:   column;
+    align-items:      flex-start;
   }
-  .book-cover {
-    width: 100%;
-    height: auto;
-    margin-right: 0;
-    margin-bottom: 8px;
+  .book-icon {
+    margin-bottom:    8px;
+    margin-right:     0;
   }
   .book-content {
-    flex-direction: column;
-    gap: 8px;
+    flex-direction:   column;
+    gap:              8px;
   }
   .action-button {
-    align-self: flex-start;
+    align-self:       flex-start;
+    height:           auto;
+    padding:          6px 12px;
   }
+}
+
+/* ─── Popup de estado ─────────────────────────────────────────── */
+.popup {
+  font-family:        'Roboto', sans-serif;
+  position:           fixed;
+  bottom:             20px;
+  left:               50%;
+  transform:          translateX(-50%);
+  display:            flex;
+  align-items:        center;
+  background-color:   var(--card-bg);
+  color:              var(--card-fg);
+  padding:            12px 16px;
+  border-radius:      8px;
+  box-shadow:         0 2px 6px rgba(0,0,0,0.2);
+  z-index:            1000;
+  gap:                8px;
+}
+.popup.success svg {
+  color:              var(--accent);
+}
+.popup.error svg {
+  color:              #e53e3e;
 }

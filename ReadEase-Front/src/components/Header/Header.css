@@ -1,119 +1,144 @@
 /* ReadEase-Front/src/components/Header/Header.css */
 
-/* Carga de la fuente Lobster */
+/* ─── Carga de la fuente Lobster ─────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+/* ─── Estilos del header ─────────────────────────────────────────── */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  height: 60px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* ==================== LIGHT MODE HEADER ==================== */
-.light .header {
-  background-color: #ffffff;
-  color: #333333;
+  display:          flex;
+  justify-content:  space-between;
+  align-items:      center;
+  padding:          0 20px;
+  height:           60px;
+  position:         fixed;
+  top:              0;
+  left:             0;
+  right:            0;
+  z-index:          1000;
+  background-color: var(--card-bg);
+  color:            var(--card-fg);
+  box-shadow:       0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Logo */
 .header__logo {
-  font-family: 'Lobster', cursive;  /* Lobster */
-  font-size: 24px;
-  font-weight: normal;
-  margin: 0;
-  color: #def5e1;                   /* verde claro */
-}
-
-/* Nav links & buttons */
-.light .header__nav-link,
-.light .header__nav-button,
-.light .header__cart-button,
-.light .header__theme-toggle {
-  color: #333333;
-}
-
-.light .header__nav-link:hover,
-.light .header__nav-button:hover,
-.light .header__cart-button:hover,
-.light .header__theme-toggle:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* ==================== DARK MODE HEADER ==================== */
-.dark .header {
-  background-color: #222222;
-  color: #f0f0f0;
-}
-
-/* Logo in dark: same green */
-.dark .header__logo {
   font-family: 'Lobster', cursive;
-  color: #def5e1;
+  font-size:   24px;
+  margin:      0;
+  color:       var(--accent);
 }
-
-/* Nav links & buttons */
-.dark .header__nav-link,
-.dark .header__nav-button,
-.dark .header__cart-button,
-.dark .header__theme-toggle {
-  color: #f0f0f0;
-}
-
-.dark .header__nav-link:hover,
-.dark .header__nav-button:hover,
-.dark .header__cart-button:hover,
-.dark .header__theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Common nav styles */
 .header__logo-link {
   text-decoration: none;
 }
 
+/* Navegación */
 .header__nav {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  display:       flex;
+  align-items:   center;
+  gap:           16px;
 }
-
 .header__nav-link,
 .header__nav-button {
+  font-size:       16px;
+  padding:         6px 12px;
+  border:          none;
+  background:      none;
+  border-radius:   4px;
+  cursor:          pointer;
+  transition:      background-color 0.2s ease;
+  color:           var(--card-fg);
   text-decoration: none;
-  font-size: 16px;
-  padding: 6px 12px;
-  border: none;
-  background: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+}
+.header__nav-link:hover,
+.header__nav-button:hover {
+  background-color: var(--accent);
+  color:            var(--card-bg);
 }
 
+/* ─── Contenedor para carrito + popup ───────────────────────────── */
+.cart-container {
+  position: relative;
+  display:  inline-block;
+}
+
+/* Icono del carrito */
 .header__cart-button {
-  display: flex;
-  align-items: center;
+  display:         flex;
+  align-items:     center;
   justify-content: center;
-  font-size: 20px;
-  padding: 6px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-  cursor: pointer;
+  position:        relative;
+  font-size:       20px;
+  padding:         6px;
+  border-radius:   4px;
+  cursor:          pointer;
+  transition:      background-color 0.2s ease;
+  color:           var(--card-fg);
+}
+.header__cart-button:hover {
+  background-color: var(--accent);
+  color:            var(--card-bg);
 }
 
+/* Toggle de tema */
 .header__theme-toggle {
-  background: none;
-  border: none;
-  padding: 6px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  padding:         6px;
+  border-radius:   4px;
+  cursor:          pointer;
+  transition:      background-color 0.2s ease;
+  color:           var(--card-fg);
+  font-size:       20px;
+  background:      none;
+  border:          none;
+}
+.header__theme-toggle:hover {
+  background-color: var(--accent);
+  color:            var(--card-bg);
+}
+
+/* ─── Badge sobre el carrito (SIN MODIFICAR) ────────────────────── */
+.cart-badge {
+  position:       absolute;
+  top:            -4px;
+  right:          -4px;
+  background:     var(--accent);
+  color:          var(--card-bg);
+  border-radius:  50%;
+  padding:        2px 6px;
+  font-size:      0.7rem;
+  line-height:    1;
+}
+
+/* ─── Popup tipo bocadillo (debajo del carrito) ───────────────── */
+.cart-popup {
+  position:          absolute;
+  top:               calc(100% + 6px);
+  left:              50%;
+  transform:         translateX(-50%);
+  display:           flex;
+  align-items:       center;
+  gap:               6px;
+  background-color:  var(--card-bg);
+  color:             var(--card-fg);
+  padding:           8px 12px;
+  border-radius:     4px;
+  box-shadow:        0 2px 6px rgba(0,0,0,0.2);
+  z-index:           1001;
+  white-space:       nowrap;
+}
+.cart-popup.success svg {
+  color: var(--accent);
+}
+.cart-popup.error svg {
+  color: #e53e3e;
+}
+.cart-popup__text {
+  font-size: 0.9rem;
+}
+
+/* ─── Eliminar el pico del popup ─────────────────────────────────── */
+.cart-popup::before {
+  content: none !important;
 }

@@ -1,15 +1,32 @@
-import React from 'react';
+// src/pages/Home.jsx
+
+import React, { useEffect } from 'react';
+import './Home.css';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaBookOpen, FaCog } from 'react-icons/fa';
-import './Home.css';
 
 export default function Home() {
-  return (
-    <main className="home-container">
-      {/* Logo como texto */}
-      <h1 className="home-logo-text">ReadEase</h1>
+  useEffect(() => {
+    // Al montar Home: quitamos scroll en html, body y #root
+    const html = document.documentElement;
+    const body = document.body;
+    const root = document.getElementById('root');
 
-      {/* Tarjetas con React Icons */}
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    if (root) root.style.overflow = 'hidden';
+
+    // Al desmontar Home: restauramos overflow
+    return () => {
+      html.style.overflow = '';
+      body.style.overflow = '';
+      if (root) root.style.overflow = '';
+    };
+  }, []);
+
+  return (
+    <main className="home-container full-screen">
+      <h1 className="home-logo-text">ReadEase</h1>
       <div className="cards-grid">
         <Link to="/store" className="card">
           <FaShoppingCart className="card-icon" />

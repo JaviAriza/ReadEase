@@ -1,238 +1,215 @@
-// ReadEase-Front/src/pages/Store.jsx
 import React, { useState, useEffect } from 'react';
 import { FaBook } from 'react-icons/fa';
 import API from '../services/api';
 import './Store.css';
 
 export default function Store() {
-  // Estados para manejar lista de libros, búsqueda, loading, error y mensaje de estado
-  const [books, setBooks] = useState([]);
+  // ── Estados básicos ───────────────────────────────────────────
+  const [books, setBooks]           = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [message, setMessage] = useState(''); // Mensaje de éxito/error al añadir al carrito
+  const [loading, setLoading]       = useState(true);
+  const [error, setError]           = useState(null);
 
-  // Array de colores para el icono del libro
-  const iconColors = [
-    '#E27D60', // terracota suave
-    '#8589CB', // lila suave
-    '#41B3A3', // turquesa
-    '#F8B195', // rosa pastel
-    '#E8A87C', // melocotón
-    '#C38D9E', // lila más oscuro
-    '#85DCB0', // verde menta
-    '#F67280'  // salmón
-  ];
+  // ── Paginación ─────────────────────────────────────────────────
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
-  // Al montar el componente: traemos la lista de libros del backend
+  // ── Desactivar scroll global al montar y restaurar al desmontar ──
   useEffect(() => {
-    const fetchBooks = async () => {
+    const html = document.documentElement;
+    const body = document.body;
+    const root = document.getElementById('root');
+
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    if (root) root.style.overflow = 'hidden';
+
+    return () => {
+      html.style.overflow = '';
+      body.style.overflow = '';
+      if (root) root.style.overflow = '';
+    };
+  }, []);
+
+  // ── Fetch de libros ──────────────────────────────────────────────
+  useEffect(() => {
+    (async () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await API.get('/books');
-        setBooks(response.data);
-      } catch (err) {
+        const resp = await API.get('/books');
+        setBooks(resp.data);
+      } catch {
         setError('Failed to load books');
       } finally {
         setLoading(false);
       }
-    };
-    fetchBooks();
+    })();
   }, []);
 
-  // Filtrar libros por término de búsqueda
-  const filteredBooks = books.filter((book) =>
-    book.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // ── Resetear página al cambiar búsqueda o lista de libros ───────
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, books]);
 
-  /**
-   * Decodifica el JWT (soporta Base64URL) y devuelve el payload como objeto.
-   */
+  // ── Filtrado y paginado ────────────────────────────────────────
+  const filtered = books.filter(b =>
+    b.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const pageItems = filtered.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (p) => {
+    if (p < 1 || p > totalPages) return;
+    setCurrentPage(p);
+  };
+
+  // ── JWT + carrito ─────────────────────────────────────────────
   const decodeJwt = (token) => {
     try {
-      let base64Url = token.split('.')[1];
-      let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      while (base64.length % 4) {
-        base64 += '=';
-      }
-      const jsonPayload = decodeURIComponent(
-        atob(base64)
-          .split('')
-          .map((c) => {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-          })
-          .join('')
-      );
-      return JSON.parse(jsonPayload);
-    } catch (err) {
-      console.error('Error decoding token:', err);
+      let payload = token.split('.')[1]
+        .replace(/-/g, '+').replace(/_/g, '/');
+      while (payload.length % 4) payload += '=';
+      return JSON.parse(atob(payload));
+    } catch {
       return null;
     }
   };
-
-  /**
-   * Obtiene el userId del JWT almacenado en localStorage.
-   * Revisa payload.id, payload.userId o payload.sub.
-   */
   const getUserIdFromToken = () => {
-    const token = localStorage.getItem('token');
-    if (!token) return null;
-    const payload = decodeJwt(token);
-    return (payload && (payload.id || payload.userId || payload.sub)) || null;
+    const t = localStorage.getItem('token');
+    if (!t) return null;
+    const pl = decodeJwt(t);
+    return pl && (pl.id || pl.userId || pl.sub);
   };
 
-  /**
-   * Maneja añadir un libro al carrito (requiere token en encabezado):
-   * 1. Obtiene userId del JWT.
-   * 2. Llama a GET /carts y filtra para encontrar el carrito propio.
-   * 3. Si no existe, crea uno vía POST /carts y “fallback” vuelve a leer /carts para localizar su ID.
-   * 4. Finalmente, hace POST /cart-items con el cartId correcto.
-   */
   const handleAddToCart = async (bookId) => {
     const userId = getUserIdFromToken();
     if (!userId) {
-      setMessage('You must be logged in to add to cart.');
-      setTimeout(() => setMessage(''), 3000);
+      window.dispatchEvent(new CustomEvent('cart-popup', {
+        detail: { message: 'You must be logged in to add to cart.', type: 'error' }
+      }));
       return;
     }
-
     const token = localStorage.getItem('token');
     if (!token) {
-      setMessage('You must be logged in to add to cart.');
-      setTimeout(() => setMessage(''), 3000);
+      window.dispatchEvent(new CustomEvent('cart-popup', {
+        detail: { message: 'You must be logged in to add to cart.', type: 'error' }
+      }));
       return;
     }
-
     try {
-      // 1) Hacemos GET /carts con Authorization
-      const cartsResponse = await API.get('/carts', {
+      // 1) Leer o crear carrito
+      const cartsResp = await API.get('/carts', {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      // 2) Filtramos localmente para encontrar el carrito del userId
-      const existingCart = cartsResponse.data.find(
-        (c) => c.user_id === userId
-      );
-
-      let cartId;
-
-      if (existingCart) {
-        // Si lo encontramos, tomamos su id
-        cartId = existingCart.id;
-      } else {
-        // Si no existe, lo creamos
-        const createCartResponse = await API.post(
+      let cart = cartsResp.data.find(c => c.user_id === userId);
+      if (!cart) {
+        const createResp = await API.post(
           '/carts',
           { user_id: userId },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
+          { headers: { Authorization: `Bearer ${token}` } }
         );
-
-        // Intentamos leer el id directamente de la respuesta
-        cartId = createCartResponse.data.id;
-
-        // Si el backend NO nos devolvió `id` en createCartResponse.data, hacemos fallback:
-        if (!cartId) {
-          // Volvemos a leer todos los carritos y buscamos el que acabamos de crear
-          const allCarts = await API.get('/carts', {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          const newCart = allCarts.data.find((c) => c.user_id === userId);
-          cartId = newCart?.id || null;
-        }
+        cart = { id: createResp.data.id };
       }
+      const cartId = cart.id;
+      if (!cartId) throw new Error('No cart ID');
 
-      // 3) Si aún no tenemos cartId válido, lanzamos error
-      if (!cartId) {
-        throw new Error('Could not determine cart ID');
-      }
-
-      // 4) Con cartId correcto, añadimos el libro al carrito
+      // 2) Añadir item
       await API.post(
         '/cart-items',
-        {
-          cart_id: cartId,
-          book_id: bookId,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        { cart_id: cartId, book_id: bookId },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      setMessage('Book added to cart successfully!');
-      setTimeout(() => setMessage(''), 3000);
-    } catch (err) {
-      console.error('Error adding to cart:', err);
-      setMessage('Error adding book to cart.');
-      setTimeout(() => setMessage(''), 3000);
+      // 3) Volver a leer recuento de items
+      const itemsResp = await API.get('/cart-items', {
+        params: { cart_id: cartId },
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const count = itemsResp.data.length;
+
+      // 4) Emitir eventos
+      window.dispatchEvent(new CustomEvent('cart-updated', { detail: { count } }));
+      window.dispatchEvent(new CustomEvent('cart-popup', {
+        detail: { message: 'Book added to cart successfully!', type: 'success' }
+      }));
+    } catch {
+      window.dispatchEvent(new CustomEvent('cart-popup', {
+        detail: { message: 'Error adding book to cart.', type: 'error' }
+      }));
     }
   };
 
+  // ── Render ─────────────────────────────────────────────────────
   return (
     <div className="store-container">
-      {/* -------- Barra de búsqueda -------- */}
       <div className="search-bar">
         <input
           type="text"
           placeholder="Search books..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value)}
           className="search-input"
         />
       </div>
 
-      {/* -------- Mensaje de estado (éxito/error) -------- */}
-      {message && <p className="status-message">{message}</p>}
-
-      {/* -------- Lista de libros -------- */}
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
+      ) : filtered.length === 0 ? (
+        <p>No books found.</p>
       ) : (
         <>
-          {filteredBooks.length === 0 ? (
-            <p>No books found.</p>
-          ) : (
-            <div className="vertical-list">
-              {filteredBooks.map((book) => {
-                const randomColor =
-                  iconColors[Math.floor(Math.random() * iconColors.length)];
-                return (
-                  <div key={book.id} className="book-item">
-                    {/* Icono de libro con color aleatorio */}
-                    <div className="book-cover">
-                      <FaBook size={48} color={randomColor} />
-                    </div>
-
-                    {/* Contenido: bloque de texto, precio y botón */}
-                    <div className="book-content">
-                      {/* Bloque de título + autor */}
-                      <div className="book-text">
-                        <span className="book-title">{book.title}</span>
-                        <span className="book-author">by {book.author}</span>
-                      </div>
-
-                      {/* Precio */}
-                      <span className="book-price">
-                        ${parseFloat(book.price).toFixed(2)}
-                      </span>
-
-                      {/* Botón para añadir al carrito */}
-                      <button
-                        onClick={() => handleAddToCart(book.id)}
-                        className="action-button"
-                      >
-                        Add to Cart
-                      </button>
-                    </div>
+          <div className="vertical-list">
+            {pageItems.map(book => (
+              <div key={book.id} className="book-item">
+                <div className="book-cover">
+                  <FaBook className="book-icon" size={48} />
+                </div>
+                <div className="book-content">
+                  <div className="book-text">
+                    <span className="book-title">{book.title}</span>
+                    <span className="book-author">by {book.author}</span>
                   </div>
-                );
-              })}
-            </div>
-          )}
+                  <span className="book-price">
+                    ${parseFloat(book.price).toFixed(2)}
+                  </span>
+                  <button
+                    onClick={() => handleAddToCart(book.id)}
+                    className="action-button"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="pagination">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              « Prev
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
+              <button
+                key={p}
+                className={p === currentPage ? 'active' : ''}
+                onClick={() => handlePageChange(p)}
+              >
+                {p}
+              </button>
+            ))}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next »
+            </button>
+          </div>
         </>
       )}
     </div>

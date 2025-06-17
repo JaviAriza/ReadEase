@@ -1,5 +1,3 @@
-/* File: src/index.css */
-
 /* ─── Reset global y utilidades ───────────────────────────────────────── */
 html, body, #root {
   margin: 0;
@@ -7,30 +5,35 @@ html, body, #root {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-}
 
-/* Utilidades flex / full-screen */
-.full-screen {
+  /* Layout flex para repartir Header / Main / Footer */
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
 }
 
-/* ─── Variables light / dark ──────────────────────────────────────────── */
-:root {
-  --home-bg:   #def5e1;
-  --home-fg:   #333333;
-  --card-bg:   #ffffff;
-  --card-fg:   #333333;
+/* Para que cualquier contenedor “full-screen” ocupe todo el root */
+.full-screen {
+  display:        flex;
+  flex-direction: column;
+  width:          100%;
+  height:         100%;
 }
 
-[data-theme="dark"] {
-  --home-bg:   #1f2937;
-  --home-fg:   #eeeeee;
-  --card-bg:   #303134;
-  --card-fg:   #def5e1;
+/* Este nuevo: hace que el contenido central crezca y deje sitio al footer */
+.main-content {
+  flex:           1;
+  /* Si quieres scroll interno (por ejemplo en otras páginas), desbloquea esto: */
+  /* overflow: auto; */
+  overflow:       hidden;
+  display:        flex;
+  flex-direction: column;
 }
 
-/* ─── Otros estilos globales (continúa el resto del archivo sin cambiar) ───────────────── */
+/* ─── Desactivar scroll SOLO en Home ─────────────────────────────────── */
+html.home-no-scroll,
+body.home-no-scroll,
+#root.home-no-scroll {
+  overflow: hidden !important;
+}
 
+/* …el resto de tu CSS global sin tocar… */
