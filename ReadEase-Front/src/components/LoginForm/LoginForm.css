@@ -1,0 +1,106 @@
+/* ─── Fonts ───────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+/* ─── Form card ───────────────────────────────────────────────────── */
+.login-form {
+  background:      var(--card-bg);
+  color:           var(--card-fg);
+  font-family:     'Roboto', sans-serif;
+  border-radius:   8px;
+  box-shadow:      0 2px 8px rgba(0,0,0,0.2);
+  width:           100%;
+  max-width:       380px;        /* mente la misma anchura */
+  padding:         32px 24px;
+  margin:          auto;
+  box-sizing:      border-box;
+}
+
+/* ─── Heading ─────────────────────────────────────────────────────── */
+.login-form h2 {
+  margin:          0 0 24px;
+  font-family:     'Lobster', cursive;
+  font-size:       2rem;
+  color:           var(--accent);
+  text-align:      center;
+}
+
+/* ─── Error message ───────────────────────────────────────────────── */
+.login-form .error {
+  color:           #e53e3e;
+  margin-bottom:   16px;
+  font-size:       0.9rem;
+  text-align:      center;
+}
+
+/* ─── Form layout ────────────────────────────────────────────────── */
+.login-form form {
+  display:         flex;
+  flex-direction:  column;
+  gap:             16px;
+}
+
+.login-form label {
+  display:         flex;
+  flex-direction:  column;
+  font-weight:     500;
+  font-size:       0.95rem;
+}
+
+.login-form input {
+  margin-top:      6px;
+  padding:         10px 12px;
+  font-size:       1rem;
+  border:          1px solid var(--card-fg);
+  border-radius:   4px;
+  background:      var(--home-bg);
+  color:           var(--card-fg);
+  box-sizing:      border-box;
+}
+
+/* ─── Primary button ─────────────────────────────────────────────── */
+.login-form .btn-primary {
+  padding:         12px;
+  font-size:       1rem;
+  font-weight:     500;
+  background:      var(--accent);
+  color:           var(--card-bg);
+  border:          none;
+  border-radius:   4px;
+  cursor:          pointer;
+  transition:      background 0.2s ease;
+}
+
+.login-form .btn-primary:hover {
+  background:      var(--card-fg);
+  color:           var(--card-bg);
+}
+
+/* ─── Switch link underneath ─────────────────────────────────────── */
+.login-form .switch-link {
+  text-align:      center;
+  margin-top:      16px;
+  font-size:       0.9rem;
+}
+
+.login-form .switch-link a {
+  color:           var(--accent);
+  text-decoration: none;
+  font-weight:     500;
+  transition:      opacity 0.2s;
+}
+
+.login-form .switch-link a:hover {
+  opacity:         0.8;
+}
+
+/* ─── Responsive tweaks ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .login-form {
+    padding:       24px 16px;
+    max-width:     100%;
+  }
+  .login-form h2 {
+    font-size:     1.75rem;
+  }
+}

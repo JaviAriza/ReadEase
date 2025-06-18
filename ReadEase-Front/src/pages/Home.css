@@ -1,96 +1,82 @@
+/* ReadEase-Front/src/pages/Home.css */
+
 /* ——— Import Lobster ——— */
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 /* ——— Variables de paleta según modo ——— */
 .light {
-  --home-bg:   #d09b71; /* fondo general (claro) */
-  --home-fg:   #5b3523; /* texto principal (claro) */
-  --card-bg:   #894e32; /* fondo de tarjetas (claro) */
-  --card-fg:   #beada2; /* texto/iconos en tarjetas (claro) */
-  --accent:    #181b20; /* color de acento */
+  --home-bg:   #d09b71;
+  --home-fg:   #5b3523;
+  --card-bg:   #894e32;
+  --card-fg:   #beada2;
+  --accent:    #181b20;
 }
-
 .dark {
-  --home-bg:   #181b20; /* fondo general (oscuro) */
-  --home-fg:   #beada2; /* texto principal (oscuro) */
-  --card-bg:   #5b3523; /* fondo de tarjetas (oscuro) */
-  --card-fg:   #d09b71; /* texto/iconos en tarjetas (oscuro) */
-  --accent:    #894e32; /* color de acento */
+  --home-bg:   #181b20;
+  --home-fg:   #beada2;
+  --card-bg:   #5b3523;
+  --card-fg:   #d09b71;
+  --accent:    #894e32;
 }
 
-/* 1) Reset de contenedor base */
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  /* overflow por defecto automático, controlado en Home.jsx */
-}
-
-/* 2) Main wrapper */
+/* ——— Main wrapper — flex entre header y footer ——— */
 .home-container {
-  position:        relative;
-  width:           100vw;
-  height:          calc(100vh - 80px); /* header + footer */
-  background:      var(--home-bg);
-  color:           var(--home-fg);
-  display:         flex;
-  flex-direction:  column;
-  align-items:     center;
+  flex:             1;
+  display:          flex;
+  flex-direction:   column;
+  align-items:      center;
+  width:            100%;
+  background:       var(--home-bg);
+  color:            var(--home-fg);
+  box-sizing:       border-box;
+  /* espacio para despejar el header fijo */
+  padding-top:      60px;
 }
 
-/* 3) Logo como texto mega grande */
+/* ——— Logo gigante ——— */
 .home-logo-text {
-  font-family:  'Lobster', cursive;
-  font-size:    14rem;
-  margin:       2rem 0 0;
-  text-align:   center;
-  color:        var(--home-fg);
+  font-family:      'Lobster', cursive;
+  font-size:        14rem;
+  margin:           0;
+  color:            var(--home-fg);
+  text-align:       center;
 }
 
-/* 4) Tarjetas: absolute y pegadas al footer */
+/* ——— Grid de tarjetas que CRECE ——— */
 .cards-grid {
-  position:            absolute;
-  left:                0;
-  right:               0;
-  bottom:              0;
-  height:              60%;
-  display:             grid;
+  flex:             1;
+  width:            100%;
+  display:          grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:                 0;
-  background:          var(--card-bg);
-  border-radius:       0 0 0.75rem 0.75rem;
-  overflow:            hidden;
+  gap:              0;
+  background:       var(--card-bg);
+  border-radius:    0 0 0.75rem 0.75rem;
+  overflow:         hidden;
 }
 
-/* 5) Cada tarjeta centrada y expandida */
+/* ——— Cada tarjeta ——— */
 .card {
-  display:         flex;
-  flex-direction:  column;
-  justify-content: center;
-  align-items:     center;
-  width:           100%;
-  height:          100%;
-  text-decoration: none;
+  display:          flex;
+  flex-direction:   column;
+  justify-content:  center;
+  align-items:      center;
+  width:            100%;
+  height:           100%;
+  text-decoration:  none;
 }
-
-/* Icono grande */
 .card-icon {
-  font-size:      10rem;    /* aumentado desde 8rem */
-  margin-bottom:  2.5rem;
-  color:          var(--card-fg);
+  font-size:        10rem;
+  margin-bottom:    2.5rem;
+  color:            var(--card-fg);
 }
-
-/* Etiqueta grande en Lobster */
 .card-label {
-  font-family:  'Lobster', cursive;
-  font-size:    4rem;       /* aumentado desde 3rem */
-  font-weight:  600;
-  color:        var(--card-fg);
+  font-family:      'Lobster', cursive;
+  font-size:        4rem;
+  font-weight:      600;
+  color:            var(--card-fg);
 }
-
-/* Hover: ligero realce con acento */
 .card:hover {
-  transform:           scaleX(1.05);
-  transition:          transform 0.2s;
-  box-shadow:          inset 0 -4px 0 var(--accent);
+  transform:        scaleX(1.05);
+  transition:       transform 0.2s;
+  box-shadow:       inset 0 -4px 0 var(--accent);
 }

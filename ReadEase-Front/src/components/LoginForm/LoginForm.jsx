@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import API from '../../services/api';
+import './LoginForm.css';
 
 export default function LoginForm({ onLogin }) {
   const [email, setEmail]       = useState('');
@@ -83,7 +84,7 @@ export default function LoginForm({ onLogin }) {
 
   return (
     <div className="login-form-container">
-      <h2>Iniciar Sesión</h2>
+      <h2>ReadEase - Login</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
@@ -96,7 +97,7 @@ export default function LoginForm({ onLogin }) {
           />
         </label>
         <label>
-          Contraseña:
+          Password:
           <input
             type="password"
             value={password}

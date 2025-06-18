@@ -1,4 +1,4 @@
-/* ReadEase-Front/src/pages/MyBooks.css */
+/* src/pages/MyBooks.css */
 
 /* ─── Fuentes ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
@@ -13,11 +13,11 @@
   display:           flex;
   flex-direction:    column;
   align-items:       center;
-  padding:           60px 0 24px;
+  padding:           90px 0 24px;
   box-sizing:        border-box;
 }
 
-/* ─── Título “My Books” ────────────────────────────────────────── */
+/* Título “My Books” en Lobster */
 .mybooks-container h2 {
   font-family:       'Lobster', cursive;
   font-size:         2rem;
