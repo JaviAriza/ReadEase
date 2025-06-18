@@ -1,6 +1,7 @@
+// ReadEase-Front/src/pages/Cart.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash, FaArrowLeft } from 'react-icons/fa';
 import API from '../services/api';
 import './Cart.css';
 
@@ -20,7 +21,7 @@ export default function Cart() {
       const jsonPayload = decodeURIComponent(
         atob(base64)
           .split('')
-          .map((c) => ('%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)))
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
           .join('')
       );
       return JSON.parse(jsonPayload);
@@ -36,6 +37,7 @@ export default function Cart() {
     return (payload && (payload.id || payload.userId || payload.sub)) || null;
   };
 
+  // Fetch de items
   const fetchCartItems = async () => {
     setLoading(true);
     setError('');
@@ -119,62 +121,67 @@ export default function Cart() {
       {error   && <p className="cart-error">{error}</p>}
       {message && <p className="cart-message">{message}</p>}
 
+      {/* Mensaje si está vacío */}
       {!loading && cartItems.length === 0 && !message && (
         <p>Your cart is empty.</p>
       )}
 
+      {/* Lista de items */}
       {!loading && cartItems.length > 0 && (
-        <>
-          <div className="cart-items-list">
-            {cartItems.map(item => (
-              <div key={item.id} className="cart-item">
-                <div className="cart-item-left">
-                  <div className="cart-item-title">{item.book.title}</div>
-                  <div className="cart-item-author">
-                    by {item.book.author}
-                  </div>
-                </div>
-                <div className="cart-item-right">
-                  <div className="cart-item-price">
-                    ${parseFloat(item.book.price).toFixed(2)}
-                  </div>
-                  <button
-                    className="remove-button"
-                    onClick={() => handleRemove(item.id)}
-                    disabled={loading}
-                  >
-                    <FaTrash />
-                  </button>
+        <div className="cart-items-list">
+          {cartItems.map(item => (
+            <div key={item.id} className="cart-item">
+              <div className="cart-item-left">
+                <div className="cart-item-title">{item.book.title}</div>
+                <div className="cart-item-author">
+                  by {item.book.author}
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="cart-item-right">
+                <div className="cart-item-price">
+                  ${parseFloat(item.book.price).toFixed(2)}
+                </div>
+                <button
+                  className="remove-button"
+                  onClick={() => handleRemove(item.id)}
+                  disabled={loading}
+                >
+                  <FaTrash />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
-          {/* ─── Controles: Back + Resumen ─────────────────────────── */}
-          <div className="cart-controls">
+      {/* Controles al pie */}
+      <div className="cart-controls">
+        {/* Siempre visible */}
+        <button
+          className="back-button"
+          onClick={() => navigate('/store')}
+          disabled={loading}
+        >
+          <FaArrowLeft className="back-icon" />
+          Back to Store
+        </button>
+
+        {/* Solo si hay items */}
+        {cartItems.length > 0 && (
+          <div className="cart-summary">
+            <div className="cart-total">
+              Total: ${calculateTotal().toFixed(2)}
+            </div>
             <button
-              className="back-button"
-              onClick={() => navigate('/store')}
+              className="pay-button"
+              onClick={handlePay}
               disabled={loading}
             >
-              Back to Store
+              Pay
             </button>
-
-            <div className="cart-summary">
-              <div className="cart-total">
-                Total: ${calculateTotal().toFixed(2)}
-              </div>
-              <button
-                className="pay-button"
-                onClick={handlePay}
-                disabled={loading}
-              >
-                Pay
-              </button>
-            </div>
           </div>
-        </>
-      )}
+        )}
+      </div>
     </div>
   );
 }

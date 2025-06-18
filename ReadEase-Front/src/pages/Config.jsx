@@ -1,38 +1,32 @@
-// ReadEase-Front/src/pages/Configuration.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaTimesCircle } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import API from '../services/api';
 import './Config.css';
 
 export default function Configuration() {
-  const [newName, setNewName] = useState('');
+  const [newName, setNewName]         = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [message, setMessage]         = useState('');
+  const [error, setError]             = useState('');
   const navigate = useNavigate();
 
-  // Decodifica JWT y extrae userId
+  // Extrae payload JWT
   const decodeJwt = (token) => {
     try {
-      let base64Url = token.split('.')[1];
-      let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      while (base64.length % 4) base64 += '=';
-      const jsonPayload = atob(base64)
-        .split('')
-        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-        .join('');
-      return JSON.parse(decodeURIComponent(jsonPayload));
+      let b = token.split('.')[1]
+        .replace(/-/g,'+').replace(/_/g,'/');
+      while (b.length % 4) b += '=';
+      return JSON.parse(atob(b));
     } catch {
       return null;
     }
   };
   const getUserId = () => {
-    const token = localStorage.getItem('token');
-    if (!token) return null;
-    const payload = decodeJwt(token);
-    return payload?.userId || payload?.id || payload?.sub;
+    const t = localStorage.getItem('token');
+    const p = t && decodeJwt(t);
+    return p?.id || p?.userId || p?.sub || null;
   };
 
   const handleChangeName = async () => {
@@ -54,7 +48,8 @@ export default function Configuration() {
   const handleChangePassword = async () => {
     setError(''); setMessage('');
     const userId = getUserId();
-    if (!oldPassword || !newPassword) return setError('Please fill both password fields.');
+    if (!oldPassword || !newPassword)
+      return setError('Please fill both password fields.');
     try {
       const token = localStorage.getItem('token');
       await API.put(`/users/${userId}`, { oldPassword, newPassword }, {
@@ -68,11 +63,12 @@ export default function Configuration() {
   };
 
   const handleDeleteAccount = async () => {
-    if (!window.confirm('Are you sure you want to delete your account?')) return;
+    if (!window.confirm('Are you sure you want to delete your account?'))
+      return;
     setError(''); setMessage('');
     try {
       const userId = getUserId();
-      const token = localStorage.getItem('token');
+      const token  = localStorage.getItem('token');
       await API.delete(`/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -87,10 +83,10 @@ export default function Configuration() {
     <div className="configuration-page">
       <div className="config-panel">
         <div className="panel-header">
-          <FaTimesCircle className="panel-icon" />
-          <span className="panel-title">My account</span>
+          <FaUser className="panel-icon" />
+          <h2 className="panel-title">My account</h2>
         </div>
-        <hr className="panel-divider" />
+
         <div className="panel-body">
           {error   && <p className="config-error">{error}</p>}
           {message && <p className="config-message">{message}</p>}

@@ -1,158 +1,174 @@
 /* ReadEase-Front/src/pages/Cart.css */
 
-/* ─── Fuente Roboto ───────────────────────────────────────────── */
+/* ─── Fuentes ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ─── Contenedor principal y mensajes ──────────────────────────── */
+/* ─── Contenedor principal ──────────────────────────────────────── */
 .cart-container {
-  font-family:       'Roboto', sans-serif;
-  flex:              1;
-  width:             100%;
-  background:        var(--home-bg);
-  display:           flex;
-  flex-direction:    column;
-  align-items:       center;
-  padding:           60px 0 24px;
-  box-sizing:        border-box;
-  overflow:          hidden;
+  font-family:      'Roboto', sans-serif;
+  flex:             1;
+  width:            100%;
+  background:       var(--home-bg);
+  display:          flex;
+  flex-direction:   column;
+  align-items:      center;
+  padding:          60px 0 24px;
+  box-sizing:       border-box;
+  overflow:         hidden;
 }
+
+/* ─── Título “Your Cart” ───────────────────────────────────────── */
 .cart-container h2 {
-  margin:            16px 0;
-  font-size:         2rem;
-  color:             var(--card-fg);
-  text-align:        center;
+  font-family:      'Lobster', cursive;
+  font-size:        2rem;
+  color:            var(--card-fg);
+  margin:           16px 0;
+  text-align:       center;
 }
+
+/* ─── Mensajes de estado ──────────────────────────────────────── */
 .cart-error,
 .cart-message {
-  margin:            8px 0;
-  font-size:         1rem;
-  text-align:        center;
+  margin:           8px 0;
+  font-size:        1rem;
+  text-align:       center;
 }
 .cart-error   { color: #e53e3e; }
 .cart-message { color: #2f855a; }
 
 /* ─── Lista de items ───────────────────────────────────────────── */
 .cart-items-list {
-  width:             60%;
-  max-height:        60vh;
-  margin-top:        16px;
-  display:           flex;
-  flex-direction:    column;
-  gap:               16px;
-  overflow-y:        auto;
+  width:            20%;
+  max-height:       60vh;
+  margin-top:       16px;
+  display:          flex;
+  flex-direction:   column;
+  gap:              16px;
+  overflow-y:       auto;
 }
 .cart-item {
-  display:           flex;
-  justify-content:   space-between;
-  align-items:       center;
-  background:        var(--card-bg);
-  color:             var(--card-fg);
-  border-radius:     8px;
-  padding:           16px;
-  box-shadow:        0 2px 4px rgba(0,0,0,0.2);
+  display:          flex;
+  justify-content:  space-between;
+  align-items:      center;
+  background:       var(--card-bg);
+  color:            var(--card-fg);
+  border-radius:    8px;
+  padding:          16px;
+  box-shadow:       0 2px 4px rgba(0,0,0,0.2);
 }
 .cart-item-left {
-  display:           flex;
-  flex-direction:    column;
-  gap:               4px;
+  display:          flex;
+  flex-direction:   column;
+  gap:              4px;
 }
 .cart-item-title {
-  font-size:         1.1rem;
-  font-weight:       bold;
-  margin:            0;
+  font-size:        1.1rem;
+  font-weight:      bold;
+  margin:           0;
 }
 .cart-item-author {
-  font-size:         0.9rem;
-  margin:            0;
-  opacity:           0.8;
+  font-size:        0.9rem;
+  margin:           0;
+  opacity:          0.8;
 }
 .cart-item-right {
-  display:           flex;
-  align-items:       center;
-  gap:               12px;
+  display:          flex;
+  align-items:      center;
+  gap:              12px;
 }
 .cart-item-price {
-  font-size:         1rem;
-  font-weight:       600;
+  font-size:        1rem;
+  font-weight:      600;
 }
 .remove-button {
-  background:        var(--accent);
-  color:             var(--card-bg);
-  border:            none;
-  padding:           8px;
-  border-radius:     4px;
-  cursor:            pointer;
-  transition:        opacity .2s ease;
+  background:       var(--accent);
+  color:            var(--card-bg);
+  border:           none;
+  padding:          8px;
+  border-radius:    4px;
+  cursor:           pointer;
+  transition:       opacity .2s ease;
 }
 .remove-button:hover { opacity: .8; }
 
-/* ─── Controles y resumen ──────────────────────────────────────── */
+/* ─── Controles y resumen fijados ─────────────────────────────── */
 .cart-controls {
-  width:             60%;
-  margin-top:        24px;
-  display:           flex;
-  justify-content:   center;
-  align-items:       center;
-  gap:               16px;
-  position:          fixed;
-  bottom:            10%;
-  left:              50%;
-  transform:         translateX(-50%);
-  z-index:           1000;
+  width:            60%;
+  position:         fixed;
+  bottom:           10%;
+  left:             50%;
+  transform:        translateX(-50%);
+  display:          flex;
+  justify-content:  center;
+  align-items:      center;
+  gap:              16px;
+  z-index:          1000;
 }
 
-/* ─── Botones “Back” y “Pay”—misma altura y padding ───────────── */
+/* ─── Botones “Back” y “Pay” ──────────────────────────────────── */
 .back-button,
 .pay-button {
-  background:        var(--accent);
-  color:             var(--card-bg);
-  border:            none;
-  height:            64px;
-  padding:           0 16px;  /* padding horizontal reducido */
-  border-radius:     4px;
-  font-size:         1rem;
-  font-weight:       600;
-  cursor:            pointer;
-  display:           inline-flex;
-  align-items:       center;
-  gap:               8px;
-  transition:        opacity .2s ease;
+  background:       var(--accent);
+  color:            var(--card-bg);
+  border:           none;
+  height:           64px;
+  padding:          0 24px;
+  border-radius:    4px;
+  font:             600 1rem 'Roboto', sans-serif;
+  display:          inline-flex;
+  align-items:      center;
+  gap:              8px;
+  cursor:           pointer;
+  transition:       opacity .2s ease;
 }
 .back-button:hover,
-.pay-button:hover       { opacity: .9; }
+.pay-button:hover         { opacity: .9; }
 .back-button:disabled,
-.pay-button:disabled   { opacity: .6; cursor: default; }
+.pay-button:disabled      { opacity: .6; cursor: default; }
 
 /* ─── Icono de flecha en “Back” ───────────────────────────────── */
 .back-icon {
-  font-size: 1.2rem;
-  color:     var(--card-bg);
+  font-size:        1.2rem;
+  color:            var(--card-bg);
 }
 
-/* ─── Caja de total + pay ──────────────────────────────────────── */
+/* ─── Caja de total + Pay ─────────────────────────────────────── */
 .cart-summary {
-  background:        var(--card-bg);
-  border-radius:     8px;
-  padding:           0 32px;   /* padding horizonte mayor para separar bien el botón */
-  box-shadow:        0 2px 6px rgba(0,0,0,0.2);
-  display:           flex;
-  align-items:       center;
-  gap:               16px;
-  height:            64px;
-  color:             var(--card-fg);
+  background:       var(--card-bg);
+  border-radius:    8px;
+  padding:          0 32px;
+  box-shadow:       0 2px 6px rgba(0,0,0,0.2);
+  display:          flex;
+  align-items:      center;
+  gap:              16px;
+  height:           64px;
 }
 .cart-total {
-  font-size:         1.2rem;
-  font-weight:       bold;
+  font-size:        1.2rem;
+  font-weight:      bold;
 }
 
 /* ─── Responsive (≤800px) ─────────────────────────────────────── */
 @media (max-width: 800px) {
   .cart-items-list,
-  .cart-controls { width: 90%; }
-  .cart-item       { flex-direction: column; align-items: flex-start; }
-  .cart-item-right { margin-top: 12px; }
+  .cart-controls {
+    width:90%;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items:    flex-start;
+  }
+  .cart-item-right {
+    margin-top: 12px;
+  }
   .back-button,
-  .pay-button     { width: 45%; justify-content: center; }
-  .cart-controls { gap: 8px; bottom: 8%; }
+  .pay-button {
+    width:      45%;
+    justify-content: center;
+  }
+  .cart-controls {
+    gap:        8px;
+    bottom:     8%;
+  }
 }
