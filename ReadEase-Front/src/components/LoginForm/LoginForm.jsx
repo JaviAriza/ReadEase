@@ -83,38 +83,37 @@ export default function LoginForm({ onLogin }) {
   };
 
   return (
-    <div className="login-form-container">
-      <h2>ReadEase - Login</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit" className="btn-primary">
-          Sign In
-        </button>
-      </form>
-      <p className="text-center text-sm text-gray-600">
-        Not registered?{' '}
-        <Link to="/signup" className="text-indigo-600">
-          Register here
-        </Link>
-      </p>
-    </div>
-  );
+  <div className="login-form">
+    <h2>ReadEase - Login</h2>
+    {error && <p className="error">{error}</p>}
+    <form onSubmit={handleSubmit}>
+      <label>
+        Email
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Password
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+      <button type="submit" className="btn-primary">
+        Sign In
+      </button>
+    </form>
+    <p className="switch-link">
+      Not registered?{' '}
+      <Link to="/signup">Register here</Link>
+    </p>
+  </div>
+);
+
 }

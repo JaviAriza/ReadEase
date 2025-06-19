@@ -1,3 +1,5 @@
+/* ReadEase-Front/src/pages/Cart.css */
+
 /* ─── Fuentes ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
@@ -24,6 +26,7 @@
   margin:          16px 0;
   text-align:      center;
 }
+
 /* ─── Mensajes de estado ──────────────────────────────────────── */
 .cart-error,
 .cart-message {
@@ -103,9 +106,8 @@
   z-index:          1000;
 }
 
-/* ─── Botones “Back” y “Pay” ──────────────────────────────────── */
-.back-button,
-.pay-button {
+/* ─── Botón “Back” ────────────────────────────────────────────── */
+.back-button {
   background:       var(--accent);
   color:            var(--card-bg);
   border:           none;
@@ -119,10 +121,8 @@
   cursor:           pointer;
   transition:       opacity .2s ease;
 }
-.back-button:hover,
-.pay-button:hover         { opacity: .9; }
-.back-button:disabled,
-.pay-button:disabled      { opacity: .6; cursor: default; }
+.back-button:hover         { opacity: .9; }
+.back-button:disabled      { opacity: .6; cursor: default; }
 
 /* ─── Icono de flecha en “Back” ───────────────────────────────── */
 .back-icon {
@@ -131,26 +131,56 @@
 }
 
 /* ─── Caja de total + Pay ─────────────────────────────────────── */
+/* Reservamos espacio a la derecha para el botón “Pay” */
 .cart-summary {
+  position:         relative;
   background:       var(--card-bg);
   border-radius:    8px;
-  padding:          0 32px;
+  padding:          0 160px 0 32px; /* 160px = ancho fijo del botón Pay */
   box-shadow:       0 2px 6px rgba(0,0,0,0.2);
   display:          flex;
   align-items:      center;
-  gap:              16px;
   height:           64px;
+  font:             600 1.2rem 'Roboto', sans-serif;
+  color:            var(--card-fg);
 }
+
+/* Texto del total */
 .cart-total {
-  font-size:        1.2rem;
-  font-weight:      bold;
+  margin:           0;
+  margin-right:     24px;  /* separación extra antes del botón */
 }
+
+/* ─── Botón “Pay” estirado y pegado al borde ──────────────────── */
+.pay-button {
+  position:        absolute;
+  top:             0;
+  bottom:          0;
+  right:           0;
+  width:           160px;      /* coincide con el padding-right de .cart-summary */
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  background:      var(--accent);
+  color:           var(--card-bg);
+  border:          none;
+  cursor:          pointer;
+  transition:      opacity .2s ease;
+
+  /* redondeamos sólo las esquinas derechas de la caja */
+  border-top-right-radius:    8px;
+  border-bottom-right-radius: 8px;
+
+  font:            600 1.3rem 'Roboto', sans-serif; /* fuente más grande */
+}
+.pay-button:hover        { opacity: .9; }
+.pay-button:disabled     { opacity: .6; cursor: default; }
 
 /* ─── Responsive (≤800px) ─────────────────────────────────────── */
 @media (max-width: 800px) {
   .cart-items-list,
   .cart-controls {
-    width:90%;
+    width:        90%;
   }
   .cart-item {
     flex-direction: column;
@@ -161,11 +191,15 @@
   }
   .back-button,
   .pay-button {
-    width:      45%;
-    justify-content: center;
+    position:     relative;
+    width:        auto;
+    border-radius: 4px;
+    height:       auto;
   }
-  .cart-controls {
-    gap:        8px;
-    bottom:     8%;
+  .cart-summary {
+    padding:      0 32px;
+    flex-direction: column;
+    height:       auto;
+    gap:          8px;
   }
 }

@@ -15,8 +15,8 @@
   align-items:       center;
   overflow:          hidden;
 
-  /* ── AQUÍ he subido el contenido un poco más abajo ─────────── */
-  padding-top:       100px;   /* antes 60px */
+  /* ── Desplazar contenido hacia abajo ─────────── */
+  padding-top:       100px;
 }
 
 /* ─── Barra de búsqueda ──────────────────────────────────────────── */
@@ -46,31 +46,36 @@
 
 /* ─── Cada item de libro ──────────────────────────────────────────────── */
 .book-item {
-  font-family:        'Roboto', sans-serif;
-  display:            flex;
-  align-items:        center;
-  background-color:   var(--card-bg);
-  color:              var(--card-fg);
-  border-radius:      8px;
-  padding:            12px;
-  min-height:         64px;
-  box-shadow:         0 1px 3px rgba(0, 0, 0, 0.1);
+  position:         relative;       /* para posicionar dentro */
+  font-family:      'Roboto', sans-serif;
+  display:          flex;
+  align-items:      stretch;        /* que los hijos puedan estirarse */
+  background-color: var(--card-bg);
+  color:            var(--card-fg);
+  border-radius:    8px;
+  /* dejamos solo padding izquierdo y vertical: el derecho será ocupado por el botón */
+  padding:          12px 0 12px 12px;
+  min-height:       64px;
+  box-shadow:       0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Icono con color de acento */
+/* Icono con color de texto (en lugar de acento) */
 .book-icon {
   flex-shrink:        0;
   margin-right:       12px;
-  color:              var(--accent);
+  color:              var(--card-fg);
 }
 
-/* ─── Contenedor de texto, precio y botón ─────────────────────────────── */
+/* ─── Contenedor de texto y precio ─────────────────────────────────── */
 .book-content {
-  flex:               1;
-  display:            flex;
-  justify-content:    space-between;
-  align-items:        stretch;
-  gap:                16px;
+  flex:             1;
+  display:          flex;
+  justify-content:  flex-start;
+  align-items:      center;
+  gap:              16px;
+  /* aquí reservamos espacio EXACTO para el ancho del botón */
+  /* ajusta 100px al ancho real que necesites para "Add to Cart" */
+  padding-right:    100px;
 }
 
 /* Título y autor */
@@ -94,35 +99,66 @@
   opacity:            0.7;
 }
 
-/* Precio */
+/* Precio separado hacia la derecha */
 .book-price {
   font-family:        'Roboto', sans-serif;
   font-size:          13px;
-  white-space:        nowrap;
-  margin:             0;
+  margin-left:        auto;    /* empuja el precio al extremo derecho */
+  margin-right:       16px;    /* espacio antes del botón */
   color:              var(--card-fg);
+  white-space:        nowrap;
+  display:            flex;
+  align-items:        center;
 }
 
-/* ─── Botón “Add to Cart” cuadrado ───────────────────────────────────── */
+/* ─── Botón “Add to Cart” estirado y pegado al borde ──────────────── */
 .action-button {
-  font-family:        'Roboto', sans-serif;
-  flex-shrink:        0;
-  background-color:   var(--accent);
-  color:              var(--card-bg);
-  padding:            8px;
-  border:             none;
-  border-radius:      4px;
-  font-size:          13px;
-  cursor:             pointer;
-  transition:         background-color 0.2s ease;
-  height:             100%;
-  display:            inline-flex;
-  align-items:        center;
-  justify-content:    center;
+  position:         absolute;       /* lo sacamos del flujo */
+  top:              0;
+  bottom:           0;
+  right:            0;
+  width:            100px;          /* ancho fijo, igual al padding-right de .book-content */
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+
+  font-family:      'Roboto', sans-serif;
+  background-color: var(--accent);
+  color:            var(--card-bg);
+  border:           none;
+  cursor:           pointer;
+  transition:       background-color 0.2s ease;
+  
+  /* redondeamos solo las esquinas derechas */
+  border-top-right-radius:    8px;
+  border-bottom-right-radius: 8px;
 }
+
 .action-button:hover {
-  background-color:   var(--card-fg);
-  color:              var(--card-bg);
+  background-color: var(--card-fg);
+  color:            var(--card-bg);
+}
+
+/* ─── En móvil, deshacemos el absoluto y volvemos a flujo normal ─── */
+@media (max-width: 800px) {
+  .book-item {
+    flex-direction:  column;
+    align-items:     flex-start;
+    padding:         12px;  /* restauramos padding completo */
+  }
+  .book-content {
+    flex-direction:  column;
+    padding-right:   0;     /* quita la reserva */
+    gap:             8px;
+  }
+  .action-button {
+    position:        relative;
+    width:           auto;
+    margin:          0;
+    border-radius:   4px;
+    top:              auto;
+    bottom:           auto;
+  }
 }
 
 /* ─── Mensaje de estado ─────────────────────────────────────────── */
@@ -169,10 +205,6 @@
   .vertical-list {
     width: 90%;
   }
-  .book-item {
-    flex-direction:   column;
-    align-items:      flex-start;
-  }
   .book-icon {
     margin-bottom:    8px;
     margin-right:     0;
@@ -180,11 +212,6 @@
   .book-content {
     flex-direction:   column;
     gap:              8px;
-  }
-  .action-button {
-    align-self:       flex-start;
-    height:           auto;
-    padding:          6px 12px;
   }
 }
 

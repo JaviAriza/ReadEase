@@ -6,11 +6,11 @@
 .footer {
   font-family:       'Roboto', sans-serif;
   width:             100%;
-  padding:           4px 0;
+  padding:           12px 0;              /* aumentado de 4px 0 */
   display:           flex;
   justify-content:   center;
   align-items:       center;
-  font-size:         0.75rem;
+  font-size:         0.9rem;              /* aumentado de 0.75rem */
   background-color:  var(--card-bg);
   color:             var(--card-fg);
 }
@@ -19,9 +19,10 @@
 .footer__logo-text {
   font-family:       'Lobster', cursive;
   color:             var(--accent);
+  font-size:         1rem;                /* explícito para resaltar */
 }
 
-/* Enlaces en footer */
+/* ─── Enlaces en footer ─────────────────────────────────────────── */
 .footer a {
   font-family:       'Roboto', sans-serif;
   color:             var(--accent);

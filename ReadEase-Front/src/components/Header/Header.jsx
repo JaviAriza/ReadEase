@@ -114,7 +114,7 @@ export default function Header({
         {isLoggedIn ? (
           <>
             <button className="header__nav-button" onClick={onLogout}>
-              {username} (Logout)
+              Logout
             </button>
             {isOnStorePage && (
               <Link to="/cart" className="header__cart-button">

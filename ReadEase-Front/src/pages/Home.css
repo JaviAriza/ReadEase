@@ -50,7 +50,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap:              0;
   background:       var(--card-bg);
-  border-radius:    0 0 0.75rem 0.75rem;
   overflow:         hidden;
 }
 
@@ -65,7 +64,7 @@
   text-decoration:  none;
 }
 .card-icon {
-  font-size:        10rem;
+  font-size:        8rem;
   margin-bottom:    2.5rem;
   color:            var(--card-fg);
 }
