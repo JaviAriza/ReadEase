@@ -1,0 +1,1060 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <main
+        class="home-container full-screen"
+      >
+        <h1
+          class="home-logo-text"
+        >
+          ReadEase
+        </h1>
+        <div
+          class="cards-grid"
+        >
+          <a
+            class="card"
+            data-discover="true"
+            href="/store"
+          >
+            <svg
+              class="card-icon"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 576 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"
+              />
+            </svg>
+            <span
+              class="card-label"
+            >
+              Store
+            </span>
+          </a>
+          <a
+            class="card"
+            data-discover="true"
+            href="/my-books"
+          >
+            <svg
+              class="card-icon"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 576 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"
+              />
+            </svg>
+            <span
+              class="card-label"
+            >
+              My Books
+            </span>
+          </a>
+          <a
+            class="card"
+            data-discover="true"
+            href="/config"
+          >
+            <svg
+              class="card-icon"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"
+              />
+            </svg>
+            <span
+              class="card-label"
+            >
+              Configuration
+            </span>
+          </a>
+        </div>
+      </main>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/cart" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <div
+        class="auth-container"
+      >
+        <div
+          class="login-form"
+        >
+          <h2>
+            ReadEase - Login
+          </h2>
+          <form>
+            <label>
+              Email
+              <input
+                required=""
+                type="email"
+                value=""
+              />
+            </label>
+            <label>
+              Password
+              <input
+                required=""
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              class="btn-primary"
+              type="submit"
+            >
+              Sign In
+            </button>
+          </form>
+          <p
+            class="switch-link"
+          >
+            Not registered?
+             
+            <a
+              data-discover="true"
+              href="/signup"
+            >
+              Register here
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/config" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <div
+        class="auth-container"
+      >
+        <div
+          class="login-form"
+        >
+          <h2>
+            ReadEase - Login
+          </h2>
+          <form>
+            <label>
+              Email
+              <input
+                required=""
+                type="email"
+                value=""
+              />
+            </label>
+            <label>
+              Password
+              <input
+                required=""
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              class="btn-primary"
+              type="submit"
+            >
+              Sign In
+            </button>
+          </form>
+          <p
+            class="switch-link"
+          >
+            Not registered?
+             
+            <a
+              data-discover="true"
+              href="/signup"
+            >
+              Register here
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/login" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <div
+        class="auth-container"
+      >
+        <div
+          class="login-form"
+        >
+          <h2>
+            ReadEase - Login
+          </h2>
+          <form>
+            <label>
+              Email
+              <input
+                required=""
+                type="email"
+                value=""
+              />
+            </label>
+            <label>
+              Password
+              <input
+                required=""
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              class="btn-primary"
+              type="submit"
+            >
+              Sign In
+            </button>
+          </form>
+          <p
+            class="switch-link"
+          >
+            Not registered?
+             
+            <a
+              data-discover="true"
+              href="/signup"
+            >
+              Register here
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/my-books" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <div
+        class="auth-container"
+      >
+        <div
+          class="login-form"
+        >
+          <h2>
+            ReadEase - Login
+          </h2>
+          <form>
+            <label>
+              Email
+              <input
+                required=""
+                type="email"
+                value=""
+              />
+            </label>
+            <label>
+              Password
+              <input
+                required=""
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              class="btn-primary"
+              type="submit"
+            >
+              Sign In
+            </button>
+          </form>
+          <p
+            class="switch-link"
+          >
+            Not registered?
+             
+            <a
+              data-discover="true"
+              href="/signup"
+            >
+              Register here
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/read/1" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <div
+        class="auth-container"
+      >
+        <div
+          class="login-form"
+        >
+          <h2>
+            ReadEase - Login
+          </h2>
+          <form>
+            <label>
+              Email
+              <input
+                required=""
+                type="email"
+                value=""
+              />
+            </label>
+            <label>
+              Password
+              <input
+                required=""
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              class="btn-primary"
+              type="submit"
+            >
+              Sign In
+            </button>
+          </form>
+          <p
+            class="switch-link"
+          >
+            Not registered?
+             
+            <a
+              data-discover="true"
+              href="/signup"
+            >
+              Register here
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/signup" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <div
+        class="auth-container"
+      >
+        <div
+          class="login-form"
+        >
+          <h2>
+            ReadEase - Sign Up
+          </h2>
+          <form>
+            <label>
+              Name
+              <input
+                required=""
+                type="text"
+                value=""
+              />
+            </label>
+            <label>
+              Email
+              <input
+                required=""
+                type="email"
+                value=""
+              />
+            </label>
+            <label>
+              Password
+              <input
+                required=""
+                type="password"
+                value=""
+              />
+            </label>
+            <label>
+              Confirm Password
+              <input
+                required=""
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              class="btn-primary"
+              type="submit"
+            >
+              Sign Up
+            </button>
+          </form>
+          <p
+            class="switch-link"
+          >
+            Already have an account?
+             
+            <a
+              data-discover="true"
+              href="/login"
+            >
+              Sign In
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`<App /> Snapshots por ruta > snapshot en ruta "/store" 1`] = `
+<div>
+  <div
+    class="full-screen light"
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="header__left"
+      >
+        <a
+          class="header__logo-link"
+          data-discover="true"
+          href="/"
+        >
+          <h1
+            class="header__logo"
+          >
+            ReadEase
+          </h1>
+        </a>
+      </div>
+      <nav
+        class="header__nav"
+      >
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="header__nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <button
+          aria-label="Toggle theme"
+          class="header__theme-toggle"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <div
+      class="main-content"
+    >
+      <div
+        class="store-container"
+      >
+        <div
+          class="search-bar"
+        >
+          <input
+            class="search-input"
+            placeholder="Search books..."
+            type="text"
+            value=""
+          />
+        </div>
+        <p>
+          Loading...
+        </p>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        © 2025
+         
+        <span
+          class="footer__logo-text"
+        >
+          ReadEase
+        </span>
+        . All rights reserved.
+      </p>
+    </footer>
+  </div>
+</div>
+`;
