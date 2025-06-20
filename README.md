@@ -9,7 +9,6 @@ ReadEase is an application designed to facilitate reading and managing digital c
 * [Technologies](#technologies)
 * [Installation](#installation)
 * [Database Setup](#database-setup)
-* [Usage](#usage)
 * [Admin Panel](#admin-panel)
 * [Project Structure](#project-structure)
 * [License](#license)
@@ -76,14 +75,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Usage
-
-1. Register or log in.
-2. Browse available reading content.
-3. Add, edit, or delete texts.
-4. Enjoy an enhanced reading experience.
-
----
 
 ## Admin Panel
 
