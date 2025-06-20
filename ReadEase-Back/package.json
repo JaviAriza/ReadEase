@@ -1,6 +1,7 @@
 {
   "name": "readease-back",
   "version": "1.0.0",
+  "description": "",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -9,10 +10,8 @@
     "coverage": "jest --coverage",
     "postinstall": "patch-package"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@adminjs/express": "^6.1.1",
     "@adminjs/sequelize": "^4.1.1",
@@ -31,6 +30,9 @@
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "babel-jest": "^30.0.2",
     "jest": "^29.7.0",
     "patch-package": "^8.0.0",
     "supertest": "^7.1.1"

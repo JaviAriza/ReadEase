@@ -10,7 +10,7 @@
   display:            flex;
   justify-content:    center;                       /* centra panel horizontalmente */
   align-items:        flex-start;                   /* lo sitúa justo debajo del header */
-  padding:            80px 16px 24px;               /* 80px para el header fijo + márgenes */
+  padding:            11% 16px 24px;               /* 80px para el header fijo + márgenes */
   box-sizing:         border-box;
   background:         var(--home-bg);
 }
