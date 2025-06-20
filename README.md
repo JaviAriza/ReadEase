@@ -1,26 +1,27 @@
 # ReadEase
 
-ReadEase is an application designed to facilitate reading and managing digital content, providing an intuitive and efficient user experience. The project is divided into two main parts: frontend and backend.
+ReadEase is an application designed to facilitate reading and managing digital content, providing an intuitive and efficient user experience. The project is split into two parts: frontend and backend.
 
 ---
 
 ## Table of Contents
 
-- [Technologies](#technologies)  
-- [Installation](#installation)  
-- [Database Setup](#database-setup)  
-- [Usage](#usage)  
-- [Project Structure](#project-structure)  
-- [License](#license)  
-- [Contact](#contact)  
+* [Technologies](#technologies)
+* [Installation](#installation)
+* [Database Setup](#database-setup)
+* [Project Structure](#project-structure)
+* [License](#license)
+* [Contact](#contact)
 
 ---
 
 ## Technologies
 
-- **Frontend:** Node.js  
-- **Backend:** Node.js  
-- **Database:** MySQL  
+* **Frontend:** React, Vite, Tailwind CSS, React Router, Axios
+* **Backend:** Node.js, Express, Sequelize
+* **Database:** MySQL
+* **Testing:** Jest, Vitest
+* **Linting:** ESLint
 
 ---
 
@@ -28,80 +29,71 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
 ### Prerequisites
 
-- Node.js installed ([Download Node.js](https://nodejs.org/))  
-- MySQL installed ([Download MySQL](https://dev.mysql.com/downloads/))  
+* [Node.js](https://nodejs.org/) ≥14
+* [MySQL](https://dev.mysql.com/downloads/)
 
-### Steps to Run Locally
+### Run Locally
 
-1. Clone the repository:
+```bash
+# 1. Clone repository
+git clone https://github.com/JaviAriza/ReadEase.git
+cd ReadEase
 
-   ```bash
-   git clone https://github.com/JaviAriza/ReadEase.git
+# 2. Grant execute permission to scripts
+chmod +x backend.sh frontend.sh
 
-
-2. Install dependencies and run the frontend:
-   cd ReadEase/ReadEase-Front
-   npm install
-   npm run dev
-
-3. Install dependencies and run the backend:
-   cd ../../ReadEase-Back
-   npm install
-   node app.js  # or your main backend file
-
-4. Open your browser and go to http://localhost:3000 (or the configured port).
-
-
-
-Database Setup
-ReadEase uses MySQL to store data. Follow these steps to configure your local database:
-
-1. Install MySQL
-If you don’t have MySQL installed, download and install it from MySQL Downloads.
-
-2. Create the database
-Open your MySQL console and run:
-CREATE DATABASE readease;
-
-3. Configure credentials
-In the backend folder, create a .env file (if not present) and add your database connection variables:
+# 3. Create .env in backend
+cat > ReadEase-Back/.env << EOL
 DB_HOST=localhost
-DB_USER=your_mysql_username
+DB_PORT=3306
+DB_USER=your_mysql_user
 DB_PASSWORD=your_mysql_password
 DB_NAME=readease
-DB_PORT=3306
+EOL
 
-4. Run migrations or SQL scripts
-If your project has SQL scripts or migration files to create tables, run them now to prepare the database schema.
+# 4. Start backend (default port: 3001)
+./backend.sh &
 
-5. Start the backend
-When running, the backend will connect to your MySQL database using the provided configuration.
+# 5. Start frontend (port: 3000)
+./frontend.sh
+```
 
-Usage
-Briefly explain how to use the app, for example:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Register or log in.
+---
 
-Browse through reading contents.
+## Database Setup
 
-Add, edit, or delete texts.
+1. Ensure MySQL is running.
+2. Create the database:
 
-Enjoy an enhanced reading experience.
+   ```sql
+   CREATE DATABASE readease;
+   ```
+3. The backend script (`backend.sh`) will run migrations automatically on start.
 
+---
 
-Project Structure:
+## Project Structure
+
+```
 ReadEase/
-├── ReadEase-Back/        # Backend source code  
-├── ReadEase-Front/       # Frontend source code  
-├── README.md             # This file  
-└── .git/                 # Git configuration  
+├── ReadEase-Back/      # Backend source code & scripts
+├── ReadEase-Front/     # Frontend source code & scripts
+├── README.md           # Project overview (this file)
+└── .git/               # Git settings
+```
 
+---
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## License
 
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-Contact
-For questions or suggestions, you can reach me at:
+---
 
-Email: javier.ariza.rosales@gmail.com
+## Contact
+
+For questions or suggestions, reach out at:
+
+* Email: [javier.ariza.rosales@gmail.com](mailto:javier.ariza.rosales@gmail.com)
