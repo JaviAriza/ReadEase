@@ -1,28 +1,46 @@
+````markdown
 # ReadEase
 
-ReadEase is an application designed to facilitate reading and managing digital content, providing an intuitive and efficient user experience. The project is split into two parts: frontend and backend.
+## Screenshots
+
+### Light Mode
+
+![Light Mode – Home](ReadEase-Front/public/ReadEaseHome.png)  
+![Light Mode – My books](ReadEase-Front/public/ReadEaseMyBooks.png)  
+
+### Dark Mode
+
+![Dark Mode – Home](ReadEase-Front/public/ReadEaseHomeDark.png)  
+![Dark Mode – Cart](ReadEase-Front/public/ReadEaseCartDark.png)  
+
+ReadEase is an application designed to facilitate reading and managing digital content, providing an intuitive and efficient user experience. The project is divided into two main parts: frontend and backend.
 
 ---
 
 ## Table of Contents
 
-* [Technologies](#technologies)
-* [Installation](#installation)
-* [Database Setup](#database-setup)
-* [Admin Panel](#admin-panel)
-* [Project Structure](#project-structure)
-* [License](#license)
-* [Contact](#contact)
+* [Technologies](#technologies)  
+* [Installation](#installation)  
+* [Database Setup](#database-setup)  
+* [Admin Panel](#admin-panel)  
+* [Project Structure](#project-structure)  
+* [Testing](#testing)  
+* [Next Steps](#next-steps)  
+* [License](#license)  
+* [Contact](#contact)  
 
 ---
 
 ## Technologies
 
-* **Frontend:** React, Vite, Tailwind CSS, React Router, Axios
-* **Backend:** Node.js, Express, Sequelize
-* **Database:** MySQL
-* **Testing:** Jest, Vitest
-* **Linting:** ESLint
+* **Frontend:** React, Vite, Tailwind CSS  
+* **Backend:** Node.js, Express, Sequelize  
+* **Database:** MySQL  
+* **Auth:** JWT (jsonwebtoken, bcryptjs)  
+* **Admin Panel:** AdminJS  
+* **Storage:** Multer, Cloudinary  
+* **Testing:** Vitest (frontend), Jest (backend)  
+* **Linting:** ESLint  
 
 ---
 
@@ -30,63 +48,66 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/) ≥14
-* [MySQL](https://dev.mysql.com/downloads/)
+* Node.js  
+* MySQL  
 
-### Run Locally
+### Steps
 
-```bash
-# 1. Clone repository
-git clone https://github.com/JaviAriza/ReadEase.git
-cd ReadEase
+1. Clone the repo:
 
-# 2. Grant execute permission to scripts
-chmod +x backend.sh frontend.sh
+   ```bash
+   git clone https://github.com/JaviAriza/ReadEase.git
+````
 
-# 3. Create .env in backend
-cat > ReadEase-Back/.env << EOL
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=your_mysql_user
-DB_PASSWORD=your_mysql_password
-DB_NAME=readease
-EOL
+2. Run frontend:
 
-# 4. Start backend (default port: 3001)
-./backend.sh &
+   ```bash
+   cd ReadEase/ReadEase-Front
+   npm install
+   ./frontend.sh
+   ```
+3. Run backend:
 
-# 5. Start frontend (port: 3000)
-./frontend.sh
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+   ```bash
+   cd ../ReadEase-Back
+   npm install
+   ./backend.sh
+   ```
+4. Open browser at `http://localhost:3000/`
 
 ---
 
 ## Database Setup
 
-1. Ensure MySQL is running.
-2. Create the database:
+1. Create database:
 
    ```sql
    CREATE DATABASE readease;
    ```
-3. The backend script (`backend.sh`) will run migrations automatically on start.
+2. In `ReadEase-Back/.env` set:
+
+   ```
+   DB_HOST=localhost
+   DB_USER=your_user
+   DB_PASSWORD=your_pass
+   DB_NAME=readease
+   DB_PORT=3306
+   ```
+3. Run migrations/SQL scripts if any.
 
 ---
 
-
 ## Admin Panel
 
-After starting the backend, you’ll see console output indicating the AdminJS URL. By default:
+After starting the backend you’ll see:
 
 ```
-✔️ Database connected
-🚀 Server at http://localhost:3000/
+✔️ Database connected  
+🚀 Server at http://localhost:3000/  
 🛠 AdminJS at http://localhost:3000/admin
 ```
 
-Open [http://localhost:3000/admin](http://localhost:3000/admin) in your browser and log in with your admin credentials (e.g., `admin@readease.com`).
+Go to **[http://localhost:3000/admin](http://localhost:3000/admin)** and log in with your admin credentials.
 
 ---
 
@@ -94,11 +115,47 @@ Open [http://localhost:3000/admin](http://localhost:3000/admin) in your browser 
 
 ```
 ReadEase/
-├── ReadEase-Back/      # Backend source code & scripts
-├── ReadEase-Front/     # Frontend source code & scripts
-├── README.md           # Project overview (this file)
-└── .git/               # Git settings
+├─ ReadEase-Back/        # Backend  
+│  ├─ scripts backend.sh  
+│  └─ …  
+├─ ReadEase-Front/       # Frontend  
+│  ├─ scripts frontend.sh  
+│  └─ …  
+└─ README.md  
 ```
+
+---
+
+## Testing
+
+### Frontend
+
+```bash
+cd ReadEase-Front
+npm install
+npm run coverage
+```
+
+![Frontend Test Output](ReadEase-Front/public/testBack.png)
+
+### Backend
+
+```bash
+cd ReadEase-Back
+npm install
+npm run coverage
+```
+
+![Backend Test Output](ReadEase-Front/public/testFront.png)
+
+---
+
+## Next Steps
+
+* Read mode
+* Verify purchases
+* Admin panel design
+* Purchase history
 
 ---
 
@@ -110,6 +167,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ## Contact
 
-For questions or suggestions, reach out at:
+Email: [javier.ariza.rosales@gmail.com](mailto:javier.ariza.rosales@gmail.com)
 
-* Email: [javier.ariza.rosales@gmail.com](mailto:javier.ariza.rosales@gmail.com)
+```
+```

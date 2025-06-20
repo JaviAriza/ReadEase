@@ -1,13 +1,8 @@
-// ReadEase-Back/src/controllers/UserController.js
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import UserModel from '../models/UserModel.js'
 
-/**
- * POST /login
- * Body: { email, password }
- * Devuelve { token } si las credenciales son correctas.
- */
+
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body

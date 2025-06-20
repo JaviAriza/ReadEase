@@ -1,4 +1,3 @@
-// ReadEase-Back/src/controllers/UserBookController.js
 import UserBooksModel from "../models/UserBookModel.js";
 import BookModel      from "../models/BookModel.js";
 
@@ -60,11 +59,6 @@ export const deleteUserBook = async (req, res) => {
   }
 };
 
-/**
- * GET /api/user-books/my
- * Devuelve los libros asociados al usuario autenticado,
- * sin usar include para evitar errores de asociación.
- */
 export const getMyBooks = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -72,7 +66,6 @@ export const getMyBooks = async (req, res) => {
       return res.status(401).json({ message: "Unauthorized." });
     }
 
-    // 1) Obtenemos los book_id de user_books
     const entries = await UserBooksModel.findAll({
       where: { user_id: userId },
       attributes: ["book_id"]
@@ -83,7 +76,6 @@ export const getMyBooks = async (req, res) => {
       return res.json([]);
     }
 
-    // 2) Buscamos los libros correspondientes
     const books = await BookModel.findAll({
       where: { id: bookIds },
       attributes: ["id", "title", "author", "pdf_url"]

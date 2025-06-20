@@ -1,10 +1,7 @@
-/* ReadEase-Front/src/pages/Cart.css */
 
-/* ─── Fuentes ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ─── Contenedor principal ──────────────────────────────────────── */
 .cart-container {
   font-family:      'Roboto', sans-serif;
   flex:             1;
@@ -18,7 +15,6 @@
   overflow:         hidden;
 }
 
-/* Título “Your Cart” en Lobster */
 .cart-container h2 {
   font-family:     'Lobster', cursive;
   font-size:       2rem;
@@ -27,7 +23,6 @@
   text-align:      center;
 }
 
-/* ─── Mensajes de estado ──────────────────────────────────────── */
 .cart-error,
 .cart-message {
   margin:           8px 0;
@@ -37,7 +32,6 @@
 .cart-error   { color: #e53e3e; }
 .cart-message { color: #2f855a; }
 
-/* ─── Lista de items ───────────────────────────────────────────── */
 .cart-items-list {
   width:            20%;
   max-height:       60vh;
@@ -92,7 +86,6 @@
 }
 .remove-button:hover { opacity: .8; }
 
-/* ─── Controles y resumen fijados ─────────────────────────────── */
 .cart-controls {
   width:            60%;
   position:         fixed;
@@ -106,7 +99,6 @@
   z-index:          1000;
 }
 
-/* ─── Botón “Back” ────────────────────────────────────────────── */
 .back-button {
   background:       var(--accent);
   color:            var(--card-bg);
@@ -124,19 +116,16 @@
 .back-button:hover         { opacity: .9; }
 .back-button:disabled      { opacity: .6; cursor: default; }
 
-/* ─── Icono de flecha en “Back” ───────────────────────────────── */
 .back-icon {
   font-size:        1.2rem;
   color:            var(--card-bg);
 }
 
-/* ─── Caja de total + Pay ─────────────────────────────────────── */
-/* Reservamos espacio a la derecha para el botón “Pay” */
 .cart-summary {
   position:         relative;
   background:       var(--card-bg);
   border-radius:    8px;
-  padding:          0 160px 0 32px; /* 160px = ancho fijo del botón Pay */
+  padding:          0 160px 0 32px; 
   box-shadow:       0 2px 6px rgba(0,0,0,0.2);
   display:          flex;
   align-items:      center;
@@ -145,19 +134,17 @@
   color:            var(--card-fg);
 }
 
-/* Texto del total */
 .cart-total {
   margin:           0;
-  margin-right:     24px;  /* separación extra antes del botón */
+  margin-right:     24px;  
 }
 
-/* ─── Botón “Pay” estirado y pegado al borde ──────────────────── */
 .pay-button {
   position:        absolute;
   top:             0;
   bottom:          0;
   right:           0;
-  width:           160px;      /* coincide con el padding-right de .cart-summary */
+  width:           160px;      
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -167,7 +154,6 @@
   cursor:          pointer;
   transition:      opacity .2s ease;
 
-  /* redondeamos sólo las esquinas derechas de la caja */
   border-top-right-radius:    8px;
   border-bottom-right-radius: 8px;
 
@@ -176,7 +162,6 @@
 .pay-button:hover        { opacity: .9; }
 .pay-button:disabled     { opacity: .6; cursor: default; }
 
-/* ─── Responsive (≤800px) ─────────────────────────────────────── */
 @media (max-width: 800px) {
   .cart-items-list,
   .cart-controls {

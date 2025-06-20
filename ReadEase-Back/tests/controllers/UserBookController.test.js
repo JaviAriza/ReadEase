@@ -1,4 +1,3 @@
-// tests/controllers/UserBookController.test.js
 import { describe, it, beforeEach, expect, jest } from 'jest'
 import * as UBController from '../../controllers/UserBookController.js'
 import UserBookModel from '../../models/UserBookModel.js'

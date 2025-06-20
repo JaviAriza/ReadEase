@@ -1,4 +1,3 @@
-// ReadEase-Front/src/pages/Cart.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaTrash, FaArrowLeft } from 'react-icons/fa';
@@ -12,7 +11,6 @@ export default function Cart() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Decodifica JWT y devuelve payload
   const decodeJwt = (token) => {
     try {
       let base64Url = token.split('.')[1];
@@ -37,7 +35,6 @@ export default function Cart() {
     return (payload && (payload.id || payload.userId || payload.sub)) || null;
   };
 
-  // Fetch de items
   const fetchCartItems = async () => {
     setLoading(true);
     setError('');
@@ -121,12 +118,10 @@ export default function Cart() {
       {error   && <p className="cart-error">{error}</p>}
       {message && <p className="cart-message">{message}</p>}
 
-      {/* Mensaje si está vacío */}
       {!loading && cartItems.length === 0 && !message && (
         <p>Your cart is empty.</p>
       )}
 
-      {/* Lista de items */}
       {!loading && cartItems.length > 0 && (
         <div className="cart-items-list">
           {cartItems.map(item => (
@@ -154,9 +149,7 @@ export default function Cart() {
         </div>
       )}
 
-      {/* Controles al pie */}
       <div className="cart-controls">
-        {/* Siempre visible */}
         <button
           className="back-button"
           onClick={() => navigate('/store')}
@@ -166,7 +159,6 @@ export default function Cart() {
           Back to Store
         </button>
 
-        {/* Solo si hay items */}
         {cartItems.length > 0 && (
           <div className="cart-summary">
             <div className="cart-total">

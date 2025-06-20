@@ -1,4 +1,3 @@
-// ReadEase-Back/src/models/UserBookModel.js
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
 

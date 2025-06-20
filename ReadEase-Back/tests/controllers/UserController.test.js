@@ -1,4 +1,3 @@
-// tests/controllers/UserController.test.js
 import bcrypt from 'bcryptjs'
 import UserModel from '../../models/UserModel.js'
 import * as UserController from '../../controllers/UserController.js'
@@ -7,7 +6,6 @@ describe('UserController', () => {
   let req, res
 
   beforeEach(() => {
-    // request y response simulados
     req = { body: {}, params: {} }
     res = {
       status: jest.fn().mockReturnThis(),
@@ -127,7 +125,6 @@ describe('UserController', () => {
       }
       jest.spyOn(UserModel, 'findOne').mockResolvedValue(user)
       await UserController.updateUser(req, res)
-      // Comprobamos que el campo se asignó y se guardó
       expect(user.email).toBe('u@u.com')
       expect(user.save).toHaveBeenCalled()
       expect(res.json).toHaveBeenCalledWith({

@@ -1,7 +1,6 @@
-// ReadEase-Back/src/models/CartItemModel.js
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
-import BookModel from "./BookModel.js"; // Importamos para la asociación
+import BookModel from "./BookModel.js"; 
 
 const CartItemModel = db.define(
   "cart_items",
@@ -25,13 +24,11 @@ const CartItemModel = db.define(
 );
 
 // === ASOCIACIONES ===
-// Cada CartItem pertenece a un único Book (clave foránea 'book_id', alias 'book')
 CartItemModel.belongsTo(BookModel, {
   foreignKey: "book_id",
   as: "book",
 });
 
-// Un Book puede tener muchos CartItems asociados
 BookModel.hasMany(CartItemModel, {
   foreignKey: "book_id",
   as: "cart_items",

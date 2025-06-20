@@ -1,9 +1,6 @@
-/* ReadEase-Front/src/pages/Home.css */
 
-/* ——— Import Lobster ——— */
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ——— Variables de paleta según modo ——— */
 .light {
   --home-bg:   #d09b71;
   --home-fg:   #5b3523;
@@ -19,7 +16,6 @@
   --accent:    #894e32;
 }
 
-/* ——— Main wrapper — flex entre header y footer ——— */
 .home-container {
   flex:             1;
   display:          flex;
@@ -29,11 +25,9 @@
   background:       var(--home-bg);
   color:            var(--home-fg);
   box-sizing:       border-box;
-  /* espacio para despejar el header fijo */
   padding-top:      60px;
 }
 
-/* ——— Logo gigante ——— */
 .home-logo-text {
   font-family:      'Lobster', cursive;
   font-size:        14rem;
@@ -42,7 +36,6 @@
   text-align:       center;
 }
 
-/* ——— Grid de tarjetas que CRECE ——— */
 .cards-grid {
   flex:             1;
   width:            100%;
@@ -53,7 +46,6 @@
   overflow:         hidden;
 }
 
-/* ——— Cada tarjeta ——— */
 .card {
   display:          flex;
   flex-direction:   column;

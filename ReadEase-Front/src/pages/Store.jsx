@@ -4,17 +4,14 @@ import API from '../services/api';
 import './Store.css';
 
 export default function Store() {
-  // ── Estados básicos ───────────────────────────────────────────
   const [books, setBooks]           = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading]       = useState(true);
   const [error, setError]           = useState(null);
 
-  // ── Paginación ─────────────────────────────────────────────────
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  // ── Desactivar scroll global al montar y restaurar al desmontar ──
   useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
@@ -31,7 +28,6 @@ export default function Store() {
     };
   }, []);
 
-  // ── Fetch de libros ──────────────────────────────────────────────
   useEffect(() => {
     (async () => {
       setLoading(true);
@@ -47,12 +43,10 @@ export default function Store() {
     })();
   }, []);
 
-  // ── Resetear página al cambiar búsqueda o lista de libros ───────
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, books]);
 
-  // ── Filtrado y paginado ────────────────────────────────────────
   const filtered = books.filter(b =>
     b.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -65,7 +59,6 @@ export default function Store() {
     setCurrentPage(p);
   };
 
-  // ── JWT + carrito ─────────────────────────────────────────────
   const decodeJwt = (token) => {
     try {
       let payload = token.split('.')[1]
@@ -99,7 +92,6 @@ export default function Store() {
       return;
     }
     try {
-      // 1) Leer o crear carrito
       const cartsResp = await API.get('/carts', {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -115,21 +107,18 @@ export default function Store() {
       const cartId = cart.id;
       if (!cartId) throw new Error('No cart ID');
 
-      // 2) Añadir item
       await API.post(
         '/cart-items',
         { cart_id: cartId, book_id: bookId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // 3) Volver a leer recuento de items
       const itemsResp = await API.get('/cart-items', {
         params: { cart_id: cartId },
         headers: { Authorization: `Bearer ${token}` },
       });
       const count = itemsResp.data.length;
 
-      // 4) Emitir eventos
       window.dispatchEvent(new CustomEvent('cart-updated', { detail: { count } }));
       window.dispatchEvent(new CustomEvent('cart-popup', {
         detail: { message: 'Book added to cart successfully!', type: 'success' }
@@ -141,7 +130,6 @@ export default function Store() {
     }
   };
 
-  // ── Render ─────────────────────────────────────────────────────
   return (
     <div className="store-container">
       <div className="search-bar">

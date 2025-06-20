@@ -1,9 +1,6 @@
-/* ReadEase-Front/src/pages/Store.css */
 
-/* ─── Fuente ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-/* ─── Contenedor principal de la Store ─────────────────────────── */
 .store-container {
   font-family:       'Roboto', sans-serif;
   flex:              1;
@@ -15,11 +12,9 @@
   align-items:       center;
   overflow:          hidden;
 
-  /* ── Desplazar contenido hacia abajo ─────────── */
   padding-top:       100px;
 }
 
-/* ─── Barra de búsqueda ──────────────────────────────────────────── */
 .search-bar {
   width:              20%;
   display:            flex;
@@ -35,7 +30,6 @@
   font-size:          14px;
 }
 
-/* ─── Lista de libros (6 por página) ───────────────────────────────────── */
 .vertical-list {
   width:              60%;
   display:            flex;
@@ -44,41 +38,34 @@
   overflow:           hidden;
 }
 
-/* ─── Cada item de libro ──────────────────────────────────────────────── */
 .book-item {
-  position:         relative;       /* para posicionar dentro */
+  position:         relative;       
   font-family:      'Roboto', sans-serif;
   display:          flex;
-  align-items:      stretch;        /* que los hijos puedan estirarse */
+  align-items:      stretch;       
   background-color: var(--card-bg);
   color:            var(--card-fg);
   border-radius:    8px;
-  /* dejamos solo padding izquierdo y vertical: el derecho será ocupado por el botón */
   padding:          12px 0 12px 12px;
   min-height:       64px;
   box-shadow:       0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Icono con color de texto (en lugar de acento) */
 .book-icon {
   flex-shrink:        0;
   margin-right:       12px;
   color:              var(--card-fg);
 }
 
-/* ─── Contenedor de texto y precio ─────────────────────────────────── */
 .book-content {
   flex:             1;
   display:          flex;
   justify-content:  flex-start;
   align-items:      center;
   gap:              16px;
-  /* aquí reservamos espacio EXACTO para el ancho del botón */
-  /* ajusta 100px al ancho real que necesites para "Add to Cart" */
   padding-right:    100px;
 }
 
-/* Título y autor */
 .book-text {
   display:            flex;
   flex-direction:     column;
@@ -99,25 +86,23 @@
   opacity:            0.7;
 }
 
-/* Precio separado hacia la derecha */
 .book-price {
   font-family:        'Roboto', sans-serif;
   font-size:          13px;
-  margin-left:        auto;    /* empuja el precio al extremo derecho */
-  margin-right:       16px;    /* espacio antes del botón */
+  margin-left:        auto;    
+  margin-right:       16px;  
   color:              var(--card-fg);
   white-space:        nowrap;
   display:            flex;
   align-items:        center;
 }
 
-/* ─── Botón “Add to Cart” estirado y pegado al borde ──────────────── */
 .action-button {
-  position:         absolute;       /* lo sacamos del flujo */
+  position:         absolute;     
   top:              0;
   bottom:           0;
   right:            0;
-  width:            100px;          /* ancho fijo, igual al padding-right de .book-content */
+  width:            100px;         
   display:          flex;
   align-items:      center;
   justify-content:  center;
@@ -129,7 +114,6 @@
   cursor:           pointer;
   transition:       background-color 0.2s ease;
   
-  /* redondeamos solo las esquinas derechas */
   border-top-right-radius:    8px;
   border-bottom-right-radius: 8px;
 }
@@ -139,16 +123,15 @@
   color:            var(--card-bg);
 }
 
-/* ─── En móvil, deshacemos el absoluto y volvemos a flujo normal ─── */
 @media (max-width: 800px) {
   .book-item {
     flex-direction:  column;
     align-items:     flex-start;
-    padding:         12px;  /* restauramos padding completo */
+    padding:         12px;  
   }
   .book-content {
     flex-direction:  column;
-    padding-right:   0;     /* quita la reserva */
+    padding-right:   0;     
     gap:             8px;
   }
   .action-button {
@@ -161,7 +144,6 @@
   }
 }
 
-/* ─── Mensaje de estado ─────────────────────────────────────────── */
 .status-message {
   font-family:        'Roboto', sans-serif;
   font-size:          14px;
@@ -169,7 +151,6 @@
   margin:             0 0 8px 0;
 }
 
-/* ─── Paginación ───────────────────────────────────────────────── */
 .pagination {
   display:            flex;
   justify-content:    center;
@@ -199,7 +180,6 @@
   cursor:             not-allowed;
 }
 
-/* ─── Responsive (pantallas ≤ 800px) ───────────────────────────────── */
 @media (max-width: 800px) {
   .search-bar,
   .vertical-list {
@@ -215,7 +195,6 @@
   }
 }
 
-/* ─── Popup de estado ─────────────────────────────────────────── */
 .popup {
   font-family:        'Roboto', sans-serif;
   position:           fixed;

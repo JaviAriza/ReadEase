@@ -24,7 +24,6 @@ export default function App() {
   const [username, setUsername] = useState(null);
   const [theme, setTheme]       = useState('light');
 
-  // Carga inicial de token, username y tema
   useEffect(() => {
     const savedToken = localStorage.getItem('token');
     const savedName  = localStorage.getItem('username');
@@ -61,10 +60,8 @@ export default function App() {
   const isLoggedIn = Boolean(token);
 
   return (
-    /* Aplicamos full-screen + tema */
     <div className={`full-screen ${theme}`}>
       <BrowserRouter>
-        {/* Header siempre arriba */}
         <Header
           isLoggedIn={isLoggedIn}
           username={username}
@@ -73,7 +70,6 @@ export default function App() {
           currentTheme={theme}
         />
 
-        {/* Contenido central que crece */}
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -125,12 +121,10 @@ export default function App() {
               }
             />
 
-            {/* Ruta comodín */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
 
-        {/* Footer siempre al final */}
         <Footer />
       </BrowserRouter>
     </div>

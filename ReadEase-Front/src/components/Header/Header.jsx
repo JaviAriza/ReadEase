@@ -1,4 +1,3 @@
-// ReadEase-Front/src/components/Header/Header.jsx
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -8,7 +7,7 @@ import {
   FaCheckCircle,
   FaTimesCircle
 } from 'react-icons/fa';
-import API from '../../services/api';  // ajusta ruta si difiere
+import API from '../../services/api';  
 import './Header.css';
 
 export default function Header({
@@ -22,11 +21,9 @@ export default function Header({
   const isOnStorePage = location.pathname === '/store';
   const ThemeIcon = currentTheme === 'light' ? FaMoon : FaSun;
 
-  // Badge y popup
   const [cartCount, setCartCount] = useState(0);
   const [popup, setPopup]         = useState(null);
 
-  // Decodificador JWT para extraer userId
   const decodeJwt = (token) => {
     try {
       let base64 = token.split('.')[1]
@@ -45,7 +42,6 @@ export default function Header({
     return payload && (payload.id || payload.userId || payload.sub);
   };
 
-  // 1) Escucha eventos de add/remove
   useEffect(() => {
     const onCartUpdated = (e) => {
       setCartCount(e.detail.count);
@@ -64,7 +60,6 @@ export default function Header({
     };
   }, []);
 
-  // 2) Al cambiar de ruta (o al montar), recarga el recuento desde el servidor
   useEffect(() => {
     const fetchCartCount = async () => {
       const token = localStorage.getItem('token');
@@ -78,7 +73,6 @@ export default function Header({
         return;
       }
       try {
-        // 2.1) Obtén el carrito del usuario
         const cartsResp = await API.get('/carts', {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -88,7 +82,6 @@ export default function Header({
           return;
         }
 
-        // 2.2) Obtén items de ese carrito
         const itemsResp = await API.get('/cart-items', {
           params:    { cart_id: cart.id },
           headers:   { Authorization: `Bearer ${token}` },

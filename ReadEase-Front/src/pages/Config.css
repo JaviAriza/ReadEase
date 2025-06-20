@@ -1,21 +1,17 @@
-/* ReadEase-Front/src/pages/Config.css */
 
-/* ─── Fuentes ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ─── Contenedor de configuración ───────────────────────────────── */
 .configuration-page {
-  flex:               1;                            /* ocupa el hueco entre Header y Footer */
+  flex:               1;                            
   display:            flex;
-  justify-content:    center;                       /* centra panel horizontalmente */
-  align-items:        flex-start;                   /* lo sitúa justo debajo del header */
-  padding:            11% 16px 24px;               /* 80px para el header fijo + márgenes */
+  justify-content:    center;                     
+  align-items:        flex-start;                  
+  padding:            11% 16px 24px;              
   box-sizing:         border-box;
   background:         var(--home-bg);
 }
 
-/* ─── Panel gris centrado ──────────────────────────────────────── */
 .config-panel {
   width:              600px;
   max-width:          100%;
@@ -27,7 +23,6 @@
   font-family:        'Roboto', sans-serif;
 }
 
-/* ─── Cabecera del panel ──────────────────────────────────────── */
 .panel-header {
   display:            flex;
   align-items:        center;
@@ -47,7 +42,6 @@
   color:              var(--accent);
 }
 
-/* ─── Cuerpo del panel ───────────────────────────────────────── */
 .panel-body {
   padding:            24px 32px;
 }
@@ -68,12 +62,11 @@
   border:             1px solid var(--card-fg);
   border-radius:      6px;
   background:         var(--home-bg);
-  color:              var(--card-fg);
+  color:              var(--accent);
   font-size:          1rem;
   box-sizing:         border-box;
 }
 
-/* ─── Botones ────────────────────────────────────────────────── */
 .config-button,
 .delete-button {
   padding:            10px 16px;
@@ -101,7 +94,6 @@
   background:         rgba(229,59,59,0.1);
 }
 
-/* ─── Mensajes de estado ─────────────────────────────────────── */
 .config-error,
 .config-message {
   margin-bottom:      16px;
@@ -111,14 +103,12 @@
 .config-error { color: #e53e3e; }
 .config-message { color: #2f855a; }
 
-/* ─── Pie del panel ───────────────────────────────────────────── */
 .config-footer {
   display:            flex;
   justify-content:    flex-end;
   padding:            0 32px 24px;
 }
 
-/* ─── Responsive (≤600px) ───────────────────────────────────── */
 @media (max-width: 600px) {
   .configuration-page {
     padding:         80px 16px 16px;

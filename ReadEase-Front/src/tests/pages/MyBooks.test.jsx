@@ -1,4 +1,3 @@
-// src/tests/pages/MyBooks.test.jsx
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { vi, describe, it, beforeEach, expect } from 'vitest'

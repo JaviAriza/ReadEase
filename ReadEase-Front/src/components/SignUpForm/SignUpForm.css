@@ -1,8 +1,6 @@
-/* ─── Fonts ───────────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ─── Form card ───────────────────────────────────────────────────── */
 .signup-form {
   background:      var(--card-bg);
   color:           var(--card-fg);
@@ -10,13 +8,12 @@
   border-radius:   8px;
   box-shadow:      0 2px 8px rgba(0,0,0,0.2);
   width:           100%;
-  max-width:       400px;        /* ancho aumentado */
+  max-width:       400px;        
   padding:         32px 24px;
   margin:          auto;
   box-sizing:      border-box;
 }
 
-/* ─── Heading ─────────────────────────────────────────────────────── */
 .signup-form h2 {
   margin:          0 0 24px;
   font-family:     'Lobster', cursive;
@@ -25,7 +22,6 @@
   text-align:      center;
 }
 
-/* ─── Error message ───────────────────────────────────────────────── */
 .signup-form .error {
   color:           #e53e3e;
   margin-bottom:   16px;
@@ -33,7 +29,6 @@
   text-align:      center;
 }
 
-/* ─── Form layout ────────────────────────────────────────────────── */
 .signup-form form {
   display:         flex;
   flex-direction:  column;
@@ -58,7 +53,6 @@
   box-sizing:      border-box;
 }
 
-/* ─── Primary button ─────────────────────────────────────────────── */
 .signup-form .btn-primary {
   padding:         12px;
   font-size:       1rem;
@@ -76,7 +70,6 @@
   color:           var(--card-bg);
 }
 
-/* ─── Switch link underneath ─────────────────────────────────────── */
 .signup-form .switch-link {
   text-align:      center;
   margin-top:      16px;
@@ -94,7 +87,6 @@
   opacity:         0.8;
 }
 
-/* ─── Responsive tweaks ──────────────────────────────────────────── */
 @media (max-width: 480px) {
   .signup-form {
     padding:       24px 16px;

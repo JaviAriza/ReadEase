@@ -12,7 +12,6 @@ export default function Configuration() {
   const [error, setError]             = useState('');
   const navigate = useNavigate();
 
-  // Extrae payload JWT
   const decodeJwt = (token) => {
     try {
       let b = token.split('.')[1]

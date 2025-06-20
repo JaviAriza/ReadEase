@@ -1,4 +1,3 @@
-// admin.js
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -10,10 +9,8 @@ import bcrypt from 'bcryptjs'
 import db from './database/db.js'
 import * as models from './models/index.js'
 
-// 1) Registrar el adaptador de Sequelize
 AdminJS.registerAdapter(AdminJSSequelize)
 
-// 2) Configuración de AdminJS
 const adminJs = new AdminJS({
   databases: [db],
   rootPath: '/admin',
@@ -67,7 +64,6 @@ const adminJs = new AdminJS({
   ],
 })
 
-// 3) Seed dinámico del usuario admin
 async function ensureAdminUser() {
   const email    = process.env.ADMIN_EMAIL    || 'admin@readease.com'
   const password = process.env.ADMIN_PASSWORD || 'changeme123'
@@ -88,7 +84,6 @@ async function ensureAdminUser() {
 
 await ensureAdminUser()
 
-// 4) Router autenticado de AdminJS
 const router = AdminJSExpress.buildAuthenticatedRouter(
   adminJs,
   {

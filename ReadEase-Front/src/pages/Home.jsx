@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 
 import React, { useEffect } from 'react';
 import './Home.css';
@@ -7,7 +6,6 @@ import { FaShoppingCart, FaBookOpen, FaCog } from 'react-icons/fa';
 
 export default function Home() {
   useEffect(() => {
-    // Al montar Home: quitamos scroll en html, body y #root
     const html = document.documentElement;
     const body = document.body;
     const root = document.getElementById('root');
@@ -16,7 +14,6 @@ export default function Home() {
     body.style.overflow = 'hidden';
     if (root) root.style.overflow = 'hidden';
 
-    // Al desmontar Home: restauramos overflow
     return () => {
       html.style.overflow = '';
       body.style.overflow = '';

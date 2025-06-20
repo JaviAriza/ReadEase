@@ -25,5 +25,4 @@ describe('<Header />', () => {
     expect(screen.getByLabelText(/toggle theme/i)).toBeInTheDocument()
   })
 
-  // Eliminado el test del badge, la UI no lo muestra fuera de la ruta /store
 })

@@ -1,4 +1,3 @@
-// tests/controllers/CartController.test.js
 import { describe, it, beforeEach, expect, jest } from 'jest'
 import * as CartController from '../../controllers/CartController.js'
 import CartModel from '../../models/CartModel.js'

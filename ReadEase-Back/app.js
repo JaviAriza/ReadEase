@@ -18,17 +18,12 @@ app.use(express.json())
 
 app.use('/api/auth', authRouter)
 
-// 1) Configure multer to upload PDFs into /tmp
 const upload = multer({ dest: path.join(process.cwd(), 'tmp') })
 
-// 2) Mount AdminJS at its root path BEFORE your API routes
 app.use(adminJs.options.rootPath, adminRouter)
 
-// 3) Apply multer only on the upload-PDF endpoint
-//    This ensures that POST /api/books/:id/upload-pdf uses upload.single('file')
 app.use('/api/books/:id/upload-pdf', upload.single('file'))
 
-// 4) Mount your main API router
 app.use('/api', router)
 
 try {

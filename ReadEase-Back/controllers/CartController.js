@@ -1,11 +1,8 @@
-// ReadEase-Back/src/controllers/CartController.js
 import CartModel from "../models/CartModel.js";
 import CartItemModel from "../models/CartItemModel.js";
 import UserBooksModel from "../models/UserBookModel.js";
 
-/**
- * GET /api/carts
- */
+
 export const getAllCarts = async (req, res) => {
   try {
     const carts = await CartModel.findAll();
@@ -16,9 +13,6 @@ export const getAllCarts = async (req, res) => {
   }
 };
 
-/**
- * GET /api/carts/:id
- */
 export const getCart = async (req, res) => {
   try {
     const cart = await CartModel.findOne({ where: { id: req.params.id } });
@@ -30,9 +24,6 @@ export const getCart = async (req, res) => {
   }
 };
 
-/**
- * POST /api/carts
- */
 export const createCart = async (req, res) => {
   try {
     const newCart = await CartModel.create(req.body);
@@ -43,9 +34,6 @@ export const createCart = async (req, res) => {
   }
 };
 
-/**
- * PUT /api/carts/:id
- */
 export const updateCart = async (req, res) => {
   try {
     const [updated] = await CartModel.update(req.body, {
@@ -59,9 +47,6 @@ export const updateCart = async (req, res) => {
   }
 };
 
-/**
- * DELETE /api/carts/:id
- */
 export const deleteCart = async (req, res) => {
   try {
     const deleted = await CartModel.destroy({ where: { id: req.params.id } });
@@ -73,13 +58,8 @@ export const deleteCart = async (req, res) => {
   }
 };
 
-/**
- * POST /api/carts/pay
- * Añade cada libro del carrito a user_books y limpia el carrito.
- */
 export const payCart = async (req, res) => {
   try {
-    // <-- aquí corregido:
     const userId = req.user?.userId;
     if (!userId) {
       return res.status(401).json({ message: "Unauthorized: no user." });

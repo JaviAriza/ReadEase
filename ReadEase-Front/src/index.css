@@ -1,10 +1,7 @@
-/* src/index.css */
 
-/* ─── Fuentes ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ─── Reset global y utilidades ─────────────────────────────────── */
 html, body, #root {
   margin: 0;
   padding: 0;
@@ -16,7 +13,6 @@ html, body, #root {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Para que cualquier contenedor “full-screen” ocupe todo el root */
 .full-screen {
   display: flex;
   flex-direction: column;
@@ -24,7 +20,6 @@ html, body, #root {
   height: 100%;
 }
 
-/* Área principal entre Header y Footer */
 .main-content {
   flex: 1;
   overflow: hidden;
@@ -32,14 +27,12 @@ html, body, #root {
   flex-direction: column;
 }
 
-/* Desactivar scroll SOLO en Home */
 html.home-no-scroll,
 body.home-no-scroll,
 #root.home-no-scroll {
   overflow: hidden !important;
 }
 
-/* ─── Variables de paleta según modo ───────────────────────────── */
 .light {
   --home-bg:   #d09b71;
   --home-fg:   #5b3523;

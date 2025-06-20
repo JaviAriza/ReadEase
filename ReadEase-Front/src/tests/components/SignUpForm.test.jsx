@@ -16,7 +16,6 @@ describe('<SignUpForm />', () => {
   it('renderiza todos los campos y el botón Sign Up', () => {
     render(<SignUpForm onLogin={onLogin} />, { wrapper: MemoryRouter })
 
-    // Labels únicos para cada campo
     expect(screen.getByLabelText(/Name/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/Email/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/^Password$/i)).toBeInTheDocument()           // Solo "Password"

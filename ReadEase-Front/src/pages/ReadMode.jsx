@@ -1,4 +1,3 @@
-// src/pages/ReadMode.jsx
 import React from 'react';
 
 export default function ReadMode() {

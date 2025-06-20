@@ -1,4 +1,3 @@
-// ReadEase-Front/src/pages/MyBooks.jsx
 import React, { useState, useEffect } from 'react';
 import { FaBookOpen } from 'react-icons/fa';
 import API from '../services/api';
@@ -11,7 +10,6 @@ export default function MyBooks() {
   const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [searchTerm, setSearchTerm]     = useState('');
 
-  // Trae mis libros
   const fetchMyBooks = async () => {
     setLoading(true);
     setError('');
@@ -30,14 +28,11 @@ export default function MyBooks() {
   };
 
   useEffect(() => {
-    // Creamos y ejecutamos la función asíncrona, sin devolverla
     fetchMyBooks();
-  }, []); // <-- solo al montar
+  }, []); 
 
-  // Lista de autores únicos ordenados
   const authors = Array.from(new Set(books.map(b => b.author))).sort();
 
-  // Filtrado por autor y por búsqueda
   const filtered = books
     .filter(b => !selectedAuthor || b.author === selectedAuthor)
     .filter(b => b.title.toLowerCase().includes(searchTerm.toLowerCase()));

@@ -1,4 +1,3 @@
-// ReadEase-Back/src/routes/routes.js
 import express from "express";
 import { authenticateToken, authorizeRoles } from "../middleware/auth.js";
 import { getMyBooks } from "../controllers/UserBookController.js";

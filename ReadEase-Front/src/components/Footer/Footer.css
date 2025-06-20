@@ -1,28 +1,24 @@
-/* ─── Importar Roboto y Lobster ───────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ─── Estilos del footer ─────────────────────────────────────────── */
 .footer {
   font-family:       'Roboto', sans-serif;
   width:             100%;
-  padding:           12px 0;              /* aumentado de 4px 0 */
+  padding:           12px 0;              
   display:           flex;
   justify-content:   center;
   align-items:       center;
-  font-size:         0.9rem;              /* aumentado de 0.75rem */
+  font-size:         0.9rem;            
   background-color:  var(--card-bg);
   color:             var(--card-fg);
 }
 
-/* ─── “ReadEase” con Lobster y color de acento ──────────────────── */
 .footer__logo-text {
   font-family:       'Lobster', cursive;
   color:             var(--accent);
-  font-size:         1rem;                /* explícito para resaltar */
+  font-size:         1rem;                
 }
 
-/* ─── Enlaces en footer ─────────────────────────────────────────── */
 .footer a {
   font-family:       'Roboto', sans-serif;
   color:             var(--accent);

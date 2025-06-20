@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import LoginForm   from '../components/LoginForm/LoginForm';

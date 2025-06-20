@@ -1,4 +1,3 @@
-// ReadEase-Front/src/components/LoginForm/LoginForm.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import API from '../../services/api';
@@ -10,7 +9,6 @@ export default function LoginForm({ onLogin }) {
   const [error, setError]       = useState(null);
   const navigate                = useNavigate();
 
-  // Decodifica un JWT (Base64URL) y devuelve el payload como objeto
   const decodeJwt = (token) => {
     try {
       let base64Url = token.split('.')[1];
@@ -36,16 +34,12 @@ export default function LoginForm({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 1) Hacemos POST /auth/login con email/password
-      //    El backend debe devolver al menos: { token: '...', user: { id, username, ... } }
       const { data } = await API.post('/auth/login', { email, password });
       const token = data.token;
       if (!token) {
         throw new Error('No token returned from server');
       }
 
-      // 2) Sacamos el nombre de usuario de donde lo devuelva el backend:
-      //    Primero comprobamos data.user.username, data.user.name, data.name, data.username, etc.
       let name = '';
       if (data.name) {
         name = data.name;
@@ -57,12 +51,10 @@ export default function LoginForm({ onLogin }) {
         name = '';
       }
 
-      // 3) Decodificamos el JWT para extraer el userId (payload.id, payload.userId o payload.sub)
       const payload = decodeJwt(token);
       const userId =
         (payload && (payload.id || payload.userId || payload.sub)) || null;
 
-      // 4) Guardamos en localStorage: token, username y userId
       localStorage.setItem('token', token);
       if (name) {
         localStorage.setItem('username', name);
@@ -71,10 +63,8 @@ export default function LoginForm({ onLogin }) {
         localStorage.setItem('userId', userId);
       }
 
-      // 5) Avisamos a App.jsx para que actualice su estado global
       onLogin(token, name);
 
-      // 6) Redirigimos a Home
       navigate('/');
     } catch (err) {
       console.error(err);

@@ -12,7 +12,6 @@ describe('<Cart />', () => {
   })
 
   it('muestra mensaje de carrito vacío si no hay items', async () => {
-    // Simula que la API devuelve lista vacía
     API.get.mockResolvedValueOnce({ data: [] })
     render(<Cart />, { wrapper: MemoryRouter })
     expect(await screen.findByText(/your cart is empty/i)).toBeInTheDocument()

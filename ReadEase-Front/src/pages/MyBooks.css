@@ -1,10 +1,7 @@
-/* src/pages/MyBooks.css */
 
-/* ─── Fuentes ───────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* ─── Contenedor principal ──────────────────────────────────────── */
 .mybooks-container {
   font-family:       'Roboto', sans-serif;
   flex:              1;
@@ -17,7 +14,6 @@
   box-sizing:        border-box;
 }
 
-/* Título “My Books” en Lobster */
 .mybooks-container h2 {
   font-family:       'Lobster', cursive;
   font-size:         2rem;
@@ -26,7 +22,6 @@
   text-align:        center;
 }
 
-/* ─── Mensajes de error/empty ──────────────────────────────────── */
 .error,
 .mybooks-container p {
   font-size:         1rem;
@@ -36,7 +31,6 @@
 .error { color: #e53e3e; }
 .mybooks-container p:not(.error) { color: var(--card-fg); }
 
-/* ─── Layout: sidebar + main area ─────────────────────────────── */
 .mybooks-content {
   width:             100%;
   max-width:         1200px;
@@ -44,7 +38,6 @@
   gap:               24px;
 }
 
-/* ─── Sidebar de autores ───────────────────────────────────────── */
 .sidebar {
   width:             200px;
   background:        var(--card-bg);
@@ -74,14 +67,12 @@
   color:             var(--card-bg);
 }
 
-/* ─── Área principal ───────────────────────────────────────────── */
 .main-area {
   flex:              1;
   display:           flex;
   flex-direction:    column;
 }
 
-/* ─── Barra de búsqueda ───────────────────────────────────────── */
 .search-bar {
   width:             100%;
   margin-bottom:     16px;
@@ -94,7 +85,6 @@
   font-size:         1rem;
 }
 
-/* ─── Grid de tarjetas ─────────────────────────────────────────── */
 .books-list {
   display:           grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -105,7 +95,6 @@
   box-sizing:        border-box;
 }
 
-/* ─── Cada tarjeta de libro ───────────────────────────────────── */
 .book-card {
   background:        var(--card-bg);
   color:             var(--card-fg);
@@ -121,7 +110,6 @@
   transform:         translateY(-4px);
 }
 
-/* ─── Info del libro ───────────────────────────────────────────── */
 .book-info {
   display:           flex;
   flex-direction:    column;
@@ -138,7 +126,6 @@
   margin:            0;
 }
 
-/* ─── Botón “Read” ─────────────────────────────────────────────── */
 .read-button {
   background:        var(--accent);
   color:             var(--card-bg);
@@ -157,7 +144,6 @@
   color:             var(--card-bg);
 }
 
-/* ─── Responsive (≤800px) ─────────────────────────────────────── */
 @media (max-width: 800px) {
   .mybooks-content {
     flex-direction: column;
