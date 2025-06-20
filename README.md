@@ -1,17 +1,16 @@
-````markdown
 # ReadEase
 
 ## Screenshots
 
 ### Light Mode
 
-![Light Mode – Home](ReadEase-Front/public/ReadEaseHome.png)  
-![Light Mode – My books](ReadEase-Front/public/ReadEaseMyBooks.png)  
+![Light Mode – Home](ReadEase-Front/public/ReadEaseHome.png)
+![Light Mode – My books](ReadEase-Front/public/ReadEaseMyBooks.png)
 
 ### Dark Mode
 
-![Dark Mode – Home](ReadEase-Front/public/ReadEaseHomeDark.png)  
-![Dark Mode – Cart](ReadEase-Front/public/ReadEaseCartDark.png)  
+![Dark Mode – Home](ReadEase-Front/public/ReadEaseHomeDark.png)
+![Dark Mode – Cart](ReadEase-Front/public/ReadEaseCartDark.png)
 
 ReadEase is an application designed to facilitate reading and managing digital content, providing an intuitive and efficient user experience. The project is divided into two main parts: frontend and backend.
 
@@ -19,28 +18,28 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
 ## Table of Contents
 
-* [Technologies](#technologies)  
-* [Installation](#installation)  
-* [Database Setup](#database-setup)  
-* [Admin Panel](#admin-panel)  
-* [Project Structure](#project-structure)  
-* [Testing](#testing)  
-* [Next Steps](#next-steps)  
-* [License](#license)  
-* [Contact](#contact)  
+* [Technologies](#technologies)
+* [Installation](#installation)
+* [Database Setup](#database-setup)
+* [Admin Panel](#admin-panel)
+* [Project Structure](#project-structure)
+* [Testing](#testing)
+* [Next Steps](#next-steps)
+* [License](#license)
+* [Contact](#contact)
 
 ---
 
 ## Technologies
 
-* **Frontend:** React, Vite, Tailwind CSS  
-* **Backend:** Node.js, Express, Sequelize  
-* **Database:** MySQL  
-* **Auth:** JWT (jsonwebtoken, bcryptjs)  
-* **Admin Panel:** AdminJS  
-* **Storage:** Multer, Cloudinary  
-* **Testing:** Vitest (frontend), Jest (backend)  
-* **Linting:** ESLint  
+* **Frontend:** React, Vite, Tailwind CSS
+* **Backend:** Node.js, Express, Sequelize
+* **Database:** MySQL
+* **Auth:** JWT (jsonwebtoken, bcryptjs)
+* **Admin Panel:** AdminJS
+* **Storage:** Multer, Cloudinary
+* **Testing:** Vitest (frontend), Jest (backend)
+* **Linting:** ESLint
 
 ---
 
@@ -48,8 +47,8 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
 ### Prerequisites
 
-* Node.js  
-* MySQL  
+* Node.js
+* MySQL
 
 ### Steps
 
@@ -57,8 +56,7 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
    ```bash
    git clone https://github.com/JaviAriza/ReadEase.git
-````
-
+   ```
 2. Run frontend:
 
    ```bash
@@ -73,13 +71,13 @@ ReadEase is an application designed to facilitate reading and managing digital c
    npm install
    ./backend.sh
    ```
-4. Open browser at `http://localhost:3000/`
+4. Open your browser at `http://localhost:3000/`
 
 ---
 
 ## Database Setup
 
-1. Create database:
+1. Create the database:
 
    ```sql
    CREATE DATABASE readease;
@@ -93,7 +91,7 @@ ReadEase is an application designed to facilitate reading and managing digital c
    DB_NAME=readease
    DB_PORT=3306
    ```
-3. Run migrations/SQL scripts if any.
+3. Run any migrations or SQL scripts if included.
 
 ---
 
@@ -101,7 +99,7 @@ ReadEase is an application designed to facilitate reading and managing digital c
 
 After starting the backend you’ll see:
 
-```
+```text
 ✔️ Database connected  
 🚀 Server at http://localhost:3000/  
 🛠 AdminJS at http://localhost:3000/admin
@@ -113,7 +111,7 @@ Go to **[http://localhost:3000/admin](http://localhost:3000/admin)** and log in 
 
 ## Project Structure
 
-```
+```text
 ReadEase/
 ├─ ReadEase-Back/        # Backend  
 │  ├─ scripts backend.sh  
@@ -131,7 +129,7 @@ ReadEase/
 ### Frontend
 
 ```bash
-cd ReadEase-Front
+cd ReadEase/ReadEase-Front
 npm install
 npm run coverage
 ```
@@ -141,7 +139,7 @@ npm run coverage
 ### Backend
 
 ```bash
-cd ReadEase-Back
+cd ReadEase/ReadEase-Back
 npm install
 npm run coverage
 ```
@@ -168,6 +166,3 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 ## Contact
 
 Email: [javier.ariza.rosales@gmail.com](mailto:javier.ariza.rosales@gmail.com)
-
-```
-```
