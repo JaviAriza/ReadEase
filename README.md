@@ -9,6 +9,8 @@ ReadEase is an application designed to facilitate reading and managing digital c
 * [Technologies](#technologies)
 * [Installation](#installation)
 * [Database Setup](#database-setup)
+* [Usage](#usage)
+* [Admin Panel](#admin-panel)
 * [Project Structure](#project-structure)
 * [License](#license)
 * [Contact](#contact)
@@ -71,6 +73,29 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
    CREATE DATABASE readease;
    ```
 3. The backend script (`backend.sh`) will run migrations automatically on start.
+
+---
+
+## Usage
+
+1. Register or log in.
+2. Browse available reading content.
+3. Add, edit, or delete texts.
+4. Enjoy an enhanced reading experience.
+
+---
+
+## Admin Panel
+
+After starting the backend, you’ll see console output indicating the AdminJS URL. By default:
+
+```
+✔️ Database connected
+🚀 Server at http://localhost:3000/
+🛠 AdminJS at http://localhost:3000/admin
+```
+
+Open [http://localhost:3000/admin](http://localhost:3000/admin) in your browser and log in with your admin credentials (e.g., `admin@readease.com`).
 
 ---
 
